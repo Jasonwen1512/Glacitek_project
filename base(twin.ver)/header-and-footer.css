@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Noto Sans TC", sans-serif;
+    /* font-family: 'Noto Serif TC', serif; */
+    box-sizing: border-box;
+}
+main {
+    height: 500px;
+}
+/* 電腦版 */
+.ph,
+.menu,
+.input-switch {
+    display: none;
+}
+svg {
+    display: block;
+}
+input {
+    font-size: 0.9em;
+    color: #333;
+}
+/* body */
+body {
+    background: url(image/background-img-pc.svg);
+    background-size: 100% auto;
+    width: 100%;
+    /* height: 100vh; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+/* header */
+/* 之後記得加position: fixed; */
+header .pc {
+    width: 100%;
+    background: #005691;
+    color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 65px;
+    flex-wrap: wrap;
+}
+header .pc .icon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+header .pc .icon .logo {
+    width: 40px;
+}
+header .pc .icon .text {
+    width: 150px;
+}
+header .pc .nav_and_search-cart nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.125vw;
+}
+header .pc .nav_and_search-cart nav a {
+    text-decoration: none;
+    color: #fafafa;
+    align-self: center;
+    font-size: clamp(14px, 0.9375vw, 18px);
+}
+header .pc .nav_and_search-cart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.125vw;
+}
+header .pc .search-cart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+header .pc .search {
+    position: relative;
+    align-self: center;
+}
+header .pc .cart {
+    align-self: center;
+}
+header .pc .search button {
+    position: absolute;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    left: 9px;
+    top: 8px;
+}
+header .pc .search button img {
+    width: 80%;
+}
+header .pc .search input {
+    width: 253px;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    outline: none;
+    /* font-size: 1rem; */
+    text-indent: 32px;
+    color: #333;
+    padding: 2px;
+}
+/* footer */
+footer .pc {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #dce7ef;
+    color: #333;
+    padding: 10px 65px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+footer .pc .icon {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+footer .pc .icon span {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+footer .pc .icon .logo {
+    width: 40px;
+}
+footer .pc .icon .text {
+    width: 150px;
+}
+footer .pc .info div {
+    margin: 3px 0;
+}
+footer .pc .navArea {
+    position: relative;
+}
+footer .pc .navArea nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+footer .pc .navArea nav a {
+    font-size: clamp(14px, 1vw, 19.2px);
+    text-decoration: none;
+    color: #333;
+    position: relative;
+}
+footer .pc .info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    font-size: clamp(13px, 0.833vw, 16px);
+}
+footer .pc .community-icon .icon span img {
+    width: 80%;
+}
+footer .pc .navArea nav a:nth-child(-n + 2)::after {
+    content: "";
+    display: inline-flex;
+    position: absolute;
+    right: -2.5rem;
+    top: -4px;
+    width: 1px;
+    height: 36px;
+    background-color: #333;
+}
+/* 微調電腦版footer聯絡資訊區塊 */
+@media screen and (max-width: 1550px) {
+    footer .pc .info {
+        width: 205px;
+        gap: 5px;
+    }
+    footer .pc .navArea nav a:nth-child(-n + 2)::after {
+        top: -5px;
+        height: 34px;
+    }
+}
+/* 切換為平板排版（header維持電腦、footer改為手機） */
+@media (max-width: 1230px) {
+    header .pc .search input {
+        width: 180px;
+    }
+
+    header .ph div,
+    header .ph .hamburger {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* overflow: hidden; */
+    }
+    header .ph .logo-text img,
+    header .ph .cart img,
+    header .ph .hamburger svg {
+        width: 85%;
+    }
+    /* footer */
+    footer .ph {
+        background-color: #dce7ef;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-auto-flow: column;
+        align-items: center;
+        justify-items: center;
+        padding: 15px;
+        position: relative;
+        color: #333;
+    }
+    footer .ph nav {
+        display: flex;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        gap: 25px;
+    }
+    footer .ph nav a {
+        text-decoration: none;
+        color: #333;
+    }
+    footer .ph .icon {
+        width: 40%;
+    }
+    footer .ph .community-icon .icon span img {
+        width: 80%;
+    }
+    footer .ph .icon,
+    footer .ph .community-icon {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    footer .ph .community-icon .icon {
+        gap: 2%;
+    }
+    footer .ph .info {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    footer .pc,
+    .menu {
+        display: none;
+    }
+} /* 全部改為手機 */
+@media screen and (max-width: 950px) {
+    body {
+        background: url(image/background-img-ph.svg);
+        background-size: 100% auto;
+    }
+    /* main {
+        position: relative;
+        top: 70px;
+    } */
+    header .pc,
+    footer .pc {
+        display: none;
+    }
+    header .ph,
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    footer .ph {
+        display: grid;
+    }
+    header .ph {
+        width: 100%;
+        padding: 9px 0;
+        background-color: #005691;
+        justify-content: space-evenly;
+        align-items: center;
+        position: fixed;
+        z-index: 10;
+    }
+    .overlay {
+        width: 100%;
+        height: 0vh;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: block;
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+        border: none;
+        outline: none;
+    }
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 5;
+        width: 100%;
+        /* top: 100%; */
+        transform: translateY(-100%);
+        left: 0;
+        background-color: #fff;
+        border-bottom: 1px solid #dddddd;
+        overflow: hidden;
+    }
+    .menu,
+    .overlay {
+        transition: 0.35s;
+    }
+    .menu form {
+        width: 70%;
+        position: relative;
+    }
+    .menu > button,
+    .menu div {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #fff;
+        border: 1px solid #dddddd;
+        color: #0b3c61;
+        padding: 20px 0;
+        font-size: 1.2em;
+    }
+    .menu button a {
+        text-decoration: none;
+        color: #0b3c61;
+    }
+    .menu > div {
+        border-top: 0;
+    }
+    .menu form button {
+        position: absolute;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        left: 10px;
+        top: 10px;
+        z-index: 1;
+    }
+    .menu form input {
+        width: 100%;
+        padding: 6px;
+        border-radius: 8px;
+        border: 1px solid #0b3c61;
+        text-indent: 32px;
+        outline: none;
+        position: relative;
+    }
+    .input-switch:checked ~ .menu {
+        /* top: 60px; */
+        transform: translateY(62px);
+    }
+    .input-switch:checked ~ .overlay {
+        height: 100vh;
+    }
+
+    /* 切換為 X（叉叉） 的樣式 */
+    .input-switch:checked ~ .ph .line1 {
+        transform: rotate(45deg) translate(6px, 7px);
+    }
+
+    .input-switch:checked ~ .ph .line2 {
+        transform: scaleX(0);
+    }
+
+    .input-switch:checked ~ .ph .line3 {
+        transform: rotate(-45deg) translate(22px, -5px) scaleX(2);
+    }
+    .line1,
+    .line2,
+    .line3 {
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+    .line3 {
+        transform-origin: center;
+    }
+}
+@media screen and (max-width: 550px) {
+    footer .ph nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* 微調手機版footer區塊 */
+@media screen and (max-width: 500px) {
+    footer .ph .icon img {
+        width: 90%;
+    }
+    footer .ph .community-icon {
+        width: 60%;
+        position: relative;
+        right: 0;
+    }
+    footer .ph .community-icon .icon {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 5px 20px;
+    }
+}
