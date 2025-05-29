@@ -12,7 +12,7 @@ let card = document.querySelector(".card");
 
 let currentLeft = 0; // 目前移動的距離
 let Movefrequency = 0; // 移動的格數，目前有8個分類
-function handleLeftClick() {
+const handleLeftClick = () => {
     if (exhibitArea && card) {
         // 產品左側按鈕可按
         if (Movefrequency > 0) {
@@ -43,8 +43,8 @@ function handleLeftClick() {
             Movefrequency--;
         }
     }
-}
-function handleRightClick() {
+};
+const handleRightClick = () => {
     if (exhibitArea && card) {
         // 產品右側按鈕可按
         if (Movefrequency < 5) {
@@ -75,7 +75,7 @@ function handleRightClick() {
             Movefrequency++;
         }
     }
-}
+};
 
 // ?. 代表先判斷前者有沒有存在，存在則繼續，不存在則直接跳過
 // 下面程式碼相當於
