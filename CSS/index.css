@@ -20,13 +20,6 @@ h6 {
     margin: 0;
     padding: 0;
 }
-.menu .slide-tips {
-    background-color: #fafafa;
-}
-.main-header-container {
-    position: absolute;
-    background-color: transparent;
-}
 
 .main-content {
     position: relative;
@@ -414,8 +407,8 @@ h2 {
 .share-area-item {
 }
 .community_and_suer-share {
-    width: 100%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0 5%;
 }
 .community-share {
     margin-top: 60px;
@@ -425,6 +418,7 @@ h2 {
     flex-wrap: wrap;
     flex-direction: row;
     border: 1px #dddddd solid;
+    margin-bottom: 2.2408%;
 }
 .community-share-img {
     width: 37.08%;
@@ -435,31 +429,118 @@ h2 {
 }
 .community-share-content {
     width: 62.92%;
-    padding: 0 5%;
+    padding: 3% 4.5%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     /* align-items: center; */
     /* gap: 15%; */
 }
+.community-share-content-at_and_title_and_describe > *:not(:last-child) {
+    display: block;
+    margin-bottom: 5.5%;
+}
 .community-share-content-at {
     text-align: start;
     position: relative;
+    font-size: 0.945vw;
+}
+.community-share-content-at::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 135%;
+    background-color: #000;
 }
 .community-share-content-content-title {
     position: relative;
+    font-size: 1.494vw;
 }
 .community-share-content-content-describe {
     position: relative;
+    font-size: 1.01vw;
+    line-height: 1.5;
 }
+
+.community-share-content-at_and_title_and_describe > div,
 .community-share-content-content-date_and_icon {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
     position: relative;
+    bottom: 0;
+}
+.community-share-content-content-date {
+    font-size: 1.0305vw;
 }
 .user-share {
+    overflow: hidden;
+}
+.user-share-content {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.user-share-content-item {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 兩欄 */
+    grid-template-rows: repeat(3, auto); /* 三列 */
+    gap: 2.2408%;
+}
+.user-share-content-item-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+}
+.user-share-content-item-card-img {
+    width: 35%;
+}
+.user-share-content-item-card-img img {
+    width: 100%;
+    vertical-align: middle;
+}
+.user-share-content-item-card-text {
+    width: 65%;
+    padding: 2.5%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-share-content-item-card-text-name_and_title {
+    width: 100%;
+}
+.user-share-content-item-card-text-name {
+    font-size: 1vw;
+    margin-bottom: 3%;
+}
+.user-share-content-item-card-text-title {
+    font-size: 0.9vw;
+}
+.user-share-content-item-card-text-star_and_date {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.user-share-content-item-card-text-date {
+}
+/* 電腦版，只有電腦版header才改變狀態 */
+@media screen and (min-width: 1024px) {
+    .menu .slide-tips {
+        background-color: #fafafa;
+    }
+    .main-header-container {
+        position: absolute;
+        background-color: transparent;
+    }
 }

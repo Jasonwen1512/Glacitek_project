@@ -1,10 +1,15 @@
-<svg width="1696" height="3523" viewBox="0 0 1696 3523" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1696" height="6252" viewBox="0 0 1696 6252" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="1451" y="80" width="150" height="328" fill="#E8F1F5"/>
 <rect x="261" width="150" height="328" fill="#E8F1F5"/>
 <rect x="612" y="402" width="150" height="328" fill="#E8F1F5"/>
 <rect x="1031" y="906" width="150" height="328" fill="#E8F1F5"/>
 <rect x="1467" y="1121" width="88" height="328" fill="#E8F1F5"/>
 <rect x="1567" y="3031" width="88" height="328" fill="#E8F1F5"/>
+<rect x="1335" y="5232" width="88" height="328" fill="#E8F1F5"/>
+<rect x="72" y="5805" width="88" height="328" fill="#E8F1F5"/>
+<rect x="1291" y="3565" width="88" height="328" fill="#E8F1F5"/>
+<rect x="643" y="4330" width="88" height="328" fill="#E8F1F5"/>
+<rect x="429" y="3637" width="88" height="328" fill="#E8F1F5"/>
 <rect x="989" y="118" width="88" height="328" fill="#E8F1F5"/>
 <rect x="473" y="1310" width="88" height="328" fill="#E8F1F5"/>
 <rect y="1459" width="88" height="328" fill="#E8F1F5"/>
@@ -18,7 +23,18 @@
 <rect x="903" y="1414" width="43" height="328" fill="#E8F1F5"/>
 <rect x="138" y="697" width="43" height="328" fill="#E8F1F5"/>
 <rect x="107" y="3077" width="43" height="328" fill="#E8F1F5"/>
+<rect x="22" y="4456" width="43" height="328" fill="#E8F1F5"/>
+<rect x="1567" y="3801" width="43" height="328" fill="#E8F1F5"/>
+<rect x="1084" y="4784" width="43" height="328" fill="#E8F1F5"/>
+<rect x="852" y="5383" width="43" height="328" fill="#E8F1F5"/>
 <rect x="903" y="3195" width="43" height="328" fill="#E8F1F5"/>
+<rect x="1445" y="4574" width="43" height="328" fill="#E8F1F5"/>
+<rect x="1159" y="5924" width="43" height="328" fill="#E8F1F5"/>
 <rect x="598" y="2892" width="43" height="328" fill="#E8F1F5"/>
+<rect x="407" y="5641" width="43" height="328" fill="#E8F1F5"/>
+<rect x="205" y="5179" width="43" height="328" fill="#E8F1F5"/>
+<rect x="196" y="3893" width="43" height="328" fill="#E8F1F5"/>
 <rect x="367" y="2437" width="150" height="328" fill="#E8F1F5"/>
+<rect x="927" y="4090" width="150" height="328" fill="#E8F1F5"/>
+<rect x="429" y="4902" width="150" height="328" fill="#E8F1F5"/>
 </svg>
