@@ -485,13 +485,21 @@ h2 {
 .user-share-content {
     display: flex;
     flex-wrap: nowrap;
+    position: relative;
+    right: 0;
+    transition: 0.5s;
+    /* overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-behavior: smooth; 
+    scroll-snap-type: x mandatory; 設定為水平可滾動的容器 */
 }
 .user-share-content-item {
     min-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 兩欄 */
     grid-template-rows: repeat(3, auto); /* 三列 */
-    gap: 2.2408%;
+    /* gap: 2.2408%; */
 }
 .user-share-content-item-card {
     display: flex;
@@ -500,11 +508,18 @@ h2 {
     background-color: #fff;
     border: 1px solid #dddddd;
 }
+.user-share-content-item-card:nth-child(2n + 1) {
+    margin-right: 2.2408%;
+}
+.user-share-content-item-card:nth-child(-n + 4) {
+    margin-bottom: 2.2408%;
+}
 .user-share-content-item-card-img {
     width: 35%;
 }
 .user-share-content-item-card-img img {
     width: 100%;
+    height: 100%;
     vertical-align: middle;
 }
 .user-share-content-item-card-text {
@@ -533,6 +548,14 @@ h2 {
     justify-content: space-between;
 }
 .user-share-content-item-card-text-date {
+}
+.user-share-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1%;
+    margin-top: 1%;
 }
 /* 電腦版，只有電腦版header才改變狀態 */
 @media screen and (min-width: 1024px) {

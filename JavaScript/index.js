@@ -136,7 +136,6 @@ const newstHandleRightClick = () => {
         // 新聞右側按鈕可按
         if (newsMovefrequency < newsAmount - 1) {
             console.log(newsMovefrequency);
-
             let moveWidth = newsItemCard.offsetWidth + 120;
             newsCurrentLeft -= moveWidth;
             newsItemW90.style.left = `${newsCurrentLeft}px`;
@@ -164,5 +163,35 @@ newsButtonRight?.addEventListener("click", newstHandleRightClick);
 // ↑新聞區塊
 
 // ↓使用者分享區塊
+let userShareContent = document.querySelector(".user-share-content");
+let userShareList = document.querySelector(".user-share-list");
+let userShareListA = document.querySelectorAll(".user-share-list a");
+let userShareListASvgCircle = document.querySelectorAll(
+    ".user-share-list a svg circle"
+);
+let count = 0;
+const scrollUserShareContent = (e, index) => {
+    if (e) e.preventDefault();
+    count = index; // 重置計數器，把count設置為手動點擊的index
+    userShareContent.style.right = `${index * 100}%`;
+    userShareListASvgCircle.forEach((circle, i) => {
+        if (i === index) {
+            circle.style.fill = "#004A7C";
+        } else {
+            circle.style.fill = "#D9D9D9";
+        }
+    });
+};
 
+let autoScrollUserShareContent = setInterval(() => {
+    scrollUserShareContent(null, count);
+    count++;
+    if (count >= userShareListA.length) {
+        count = 0;
+    }
+}, 2500);
+// 在頁面跳轉時清掉autoScrollUserShareContent
+window.addEventListener("beforeunload", () => {
+    clearInterval(autoScrollUserShareContent);
+});
 // ↑使用者分享區塊
