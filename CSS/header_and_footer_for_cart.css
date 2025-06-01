@@ -304,7 +304,7 @@ select {
     /*平板（直）~ 平板（橫）：電腦header、手機footer*/
     main {
         position: relative;
-        top: 0px;
+        /* top: 0px; */
     }
     #switch-hb,
     .overlay,
@@ -338,7 +338,7 @@ select {
         width: 40px;
     }
     .main-header-container {
-        position: relative;
+        position: fixed;
         justify-content: space-between;
         padding: 9px 40px;
     }
@@ -348,7 +348,7 @@ select {
     }
     .menu {
         width: 65%;
-        position: absolute;
+        position: fixed;
         background-color: transparent;
         color: var(--header-color);
         flex-direction: row;
@@ -416,7 +416,7 @@ select {
     } */
 
     .main-footer {
-        top: 0;
+        /* top: 0; */
     }
 }
 

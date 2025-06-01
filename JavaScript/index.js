@@ -135,7 +135,7 @@ const newstHandleRightClick = () => {
     if (newsItemW90 && newsItemCard) {
         // 新聞右側按鈕可按
         if (newsMovefrequency < newsAmount - 1) {
-            console.log(newsMovefrequency);
+            // console.log(newsMovefrequency);
             let moveWidth = newsItemCard.offsetWidth + 120;
             newsCurrentLeft -= moveWidth;
             newsItemW90.style.left = `${newsCurrentLeft}px`;
@@ -169,10 +169,13 @@ let userShareListA = document.querySelectorAll(".user-share-list a");
 let userShareListASvgCircle = document.querySelectorAll(
     ".user-share-list a svg circle"
 );
-let count = 0;
+let count = 1; // 計數器，從1開始，因為第一個是預設顯示的
 const scrollUserShareContent = (e, index) => {
     if (e) e.preventDefault();
+    // console.log(count);
+
     count = index; // 重置計數器，把count設置為手動點擊的index
+    userShareContent.classList.remove("remove-transition");
     userShareContent.style.right = `${index * 100}%`;
     userShareListASvgCircle.forEach((circle, i) => {
         if (i === index) {
@@ -181,17 +184,93 @@ const scrollUserShareContent = (e, index) => {
             circle.style.fill = "#D9D9D9";
         }
     });
+    if (index === userShareListASvgCircle.length) {
+        // console.log("這是第一組的copy");
+        userShareListASvgCircle[0].style.fill = "#004A7C";
+        setTimeout(() => {
+            userShareContent.classList.add("remove-transition");
+            userShareContent.style.right = "0%"; // 回到第一組
+            // console.log(userShareContent.style);
+        }, 500); // 短時間（500毫秒）内取消動畫，從"第一組的copy"跳到"真的第一組"達成無縫動畫的效果
+    }
 };
 
 let autoScrollUserShareContent = setInterval(() => {
     scrollUserShareContent(null, count);
     count++;
-    if (count >= userShareListA.length) {
-        count = 0;
+    // +1是為了讓圖片輪播到最後一組（第一組的copy）
+    if (count >= userShareListA.length + 1) {
+        count = 1; // 重置計數器，回到第一組
     }
 }, 2500);
-// 在頁面跳轉時清掉autoScrollUserShareContent
+// 在頁面跳轉時清掉 autoScrollUserShareContent
 window.addEventListener("beforeunload", () => {
     clearInterval(autoScrollUserShareContent);
 });
 // ↑使用者分享區塊
+let sectionNavTipArea = document.querySelectorAll(".section-nav .tip-area");
+let sectionNavSpan = document.querySelectorAll(".section-nav span");
+
+const pageScroll = () => {
+    let scrollTop =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop;
+    let totalHeight = document.documentElement.scrollHeight;
+    // 用百分比計算，判斷頁面大致滾動到哪裡
+    // 850px 1600px 2435px <= 這是1920px之下的標準
+    let triggerPoints = {
+        section1: (850 / totalHeight) * 100, // 產品專區
+        section2: (1600 / totalHeight) * 100, // 最新資訊
+        section3: (2435 / totalHeight) * 100, // 使用者心得分享
+    };
+    let scrollPrecent = (scrollTop / totalHeight) * 100;
+    console.log(scrollTop, window.innerHeight, totalHeight);
+
+    // 滑動超過2500時，當成到達"使用者心得分享"區塊
+    if (scrollPrecent >= triggerPoints.section3) {
+        sectionNavTipArea[0].classList.remove("display-bgc");
+        sectionNavSpan[0].classList.remove("op1");
+        sectionNavTipArea[1].classList.remove("display-bgc");
+        sectionNavSpan[1].classList.remove("op1");
+        sectionNavTipArea[2].classList.add("display-bgc");
+        sectionNavSpan[2].classList.add("op1");
+        // 滑動超過1600時，當成到達"最新資訊"區塊
+    } else if (scrollPrecent >= triggerPoints.section2) {
+        sectionNavTipArea[0].classList.remove("display-bgc");
+        sectionNavSpan[0].classList.remove("op1");
+        sectionNavTipArea[1].classList.add("display-bgc");
+        sectionNavSpan[1].classList.add("op1");
+        sectionNavTipArea[2].classList.remove("display-bgc");
+        sectionNavSpan[2].classList.remove("op1");
+        // 滑動超過850時，當成到達"產品專區"區塊
+    } else if (scrollPrecent >= triggerPoints.section1) {
+        sectionNavTipArea[0].classList.add("display-bgc");
+        sectionNavSpan[0].classList.add("op1");
+        sectionNavTipArea[1].classList.remove("display-bgc");
+        sectionNavSpan[1].classList.remove("op1");
+        sectionNavTipArea[2].classList.remove("display-bgc");
+        sectionNavSpan[2].classList.remove("op1");
+        // 滑動未超過850時，當成在頂部
+        // 皆不顯示，理論上此時導覽列會收回去會用不到這部分
+    } else {
+        sectionNavTipArea[0].classList.remove("display-bgc");
+        sectionNavSpan[0].classList.remove("op1");
+        sectionNavTipArea[1].classList.remove("display-bgc");
+        sectionNavSpan[1].classList.remove("op1");
+        sectionNavTipArea[2].classList.remove("display-bgc");
+        sectionNavSpan[2].classList.remove("op1");
+    }
+    // console.log(sectionNavTipArea, sectionNavSpan);
+};
+// 850 1600 2500
+window.removeEventListener("scroll", pageScroll);
+window.addEventListener("scroll", pageScroll);
+
+let sloganContent = document.querySelector(".slogan-content");
+let tipTriangle = document.querySelector(".tip-triangle");
+window.onload = () => {
+    console.log("加載完成");
+    sloganContent.classList.add("slogan-content-display");
+    tipTriangle.classList.add("tip-triangle-display");
+};

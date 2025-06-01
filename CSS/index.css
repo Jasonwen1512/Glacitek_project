@@ -20,7 +20,9 @@ h6 {
     margin: 0;
     padding: 0;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 .main-content {
     position: relative;
 }
@@ -60,10 +62,14 @@ h6 {
     background-color: var(--main-background-color);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 100%);
     bottom: -5px;
     z-index: 1;
     /* animation: float 2s ease-in-out infinite; */
+}
+.tip-triangle-display {
+    transform: translate(-50%, 0);
+    transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1.2) 1s;
 }
 .tip-arrow-left,
 .tip-arrow-right,
@@ -99,7 +105,11 @@ h6 {
     top: 37vh;
     right: 10%;
     z-index: 2;
-    /* transform: translateY(150%); */
+    transform: translateX(160%);
+}
+.slogan-content-display {
+    transform: translateX(0);
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1.5);
 }
 .slogan-content::before {
     content: "";
@@ -110,6 +120,9 @@ h6 {
     left: -8%;
     bottom: 19px;
     background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: 0.6s 0.5s;
 }
 .slogan-content::after {
     content: "";
@@ -120,6 +133,15 @@ h6 {
     left: -8%;
     top: 19px;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    transform-origin: right center;
+    transform: scaleX(0);
+    transition: 0.6s 0.5s;
+}
+.slogan-content-display::before {
+    transform: scaleX(1);
+}
+.slogan-content-display::after {
+    transform: scaleX(1);
 }
 .slogan {
     font-family: "Noto Serif TC", serif;
@@ -140,13 +162,17 @@ h6 {
     /* gap: 250px; */
 }
 .product-area {
-    width: 100%;
     position: relative;
     /* overflow: hidden; */
 }
 .product-area,
 .news-area {
     margin-bottom: 13.02vw;
+}
+.product-area,
+.news-area,
+.share-area {
+    width: 100%;
 }
 .product-item {
     width: 100%;
@@ -324,6 +350,7 @@ h2 {
     /* margin: 0 auto; */
     /* overflow: hidden; */
     display: flex;
+    flex-wrap: nowrap;
     transition: 0.3s;
 }
 .news-area-item {
@@ -333,14 +360,18 @@ h2 {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-self: center;
-    margin: 60px 60px 0;
+    /* justify-self: center; */
+    /* justify-content: center; */
+    margin: 60px auto 0;
+    margin-right: 10%;
+    /* padding: 0 2.5%; */
     flex-shrink: 0;
 }
 .news-item {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: center;
     overflow: hidden;
 }
 .news-item-card {
@@ -479,6 +510,13 @@ h2 {
 .community-share-content-content-date {
     font-size: 1.0305vw;
 }
+.community-share-content-content-icon {
+    width: 8.3333%;
+}
+.community-share-content-content-icon svg {
+    width: 100%;
+    height: 100%;
+}
 .user-share {
     overflow: hidden;
 }
@@ -493,6 +531,9 @@ h2 {
     scrollbar-width: none;
     scroll-behavior: smooth; 
     scroll-snap-type: x mandatory; 設定為水平可滾動的容器 */
+}
+.remove-transition {
+    transition: none;
 }
 .user-share-content-item {
     min-width: 100%;
@@ -547,7 +588,14 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.user-share-content-item-card-text-star {
+    width: 42%;
+}
+.user-share-content-item-card-text-star svg {
+    width: 15%;
+}
 .user-share-content-item-card-text-date {
+    font-size: 0.83333vw;
 }
 .user-share-list {
     display: flex;
@@ -557,6 +605,82 @@ h2 {
     gap: 1%;
     margin-top: 1%;
 }
+
+.section-nav,
+.back-to-top {
+    position: fixed;
+}
+.section-nav {
+    /* top不用變，left從左邊往内移入 */
+    top: 18.5vh;
+    left: -100%;
+    transition: 1s left;
+}
+.section-nav a {
+    display: flex;
+}
+.section-nav .tip-area {
+    width: 0.3125vw;
+    /* height: 5.55vh; */
+    height: 60px;
+    background-color: #d9d9d9;
+    transition: 0.2s;
+}
+.section-nav span {
+    font-size: 0.83333vw;
+}
+.section-nav a:hover .tip-area {
+    width: 0.5208vw;
+    background-color: #005691;
+}
+.section-nav a:hover span {
+    opacity: 1;
+}
+.tip-area.display-bgc {
+    width: 0.5208vw;
+    background-color: #005691;
+}
+a span.op1 {
+    opacity: 1;
+}
+
+.section-nav span {
+    writing-mode: vertical-rl;
+    color: #004a7c;
+    opacity: 0;
+}
+.back-to-top {
+    width: 3.22vw;
+    height: 3.22vw;
+    aspect-ratio: 1/1;
+    background-color: #fff;
+    border: 1px solid #005691;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* bottom不用變，right從右邊往内移入 */
+    bottom: 17vh;
+    right: -100%;
+    /* right: 4.5vw; */
+    transition: 1s right;
+}
+.back-to-top:hover {
+    background-color: #005691;
+    border: 1px solid #fff;
+}
+.back-to-top:hover svg path {
+    stroke: #fff;
+}
+.back-to-top-display {
+    transition: 1s cubic-bezier(0.65, 0, 0.35, 1.2) right;
+    right: 4.5vw;
+}
+.back-to-top svg {
+    width: 66%;
+    height: 66%;
+}
 /* 電腦版，只有電腦版header才改變狀態 */
 @media screen and (min-width: 1024px) {
     .menu .slide-tips {
@@ -565,5 +689,9 @@ h2 {
     .main-header-container {
         position: absolute;
         background-color: transparent;
+    }
+    .section-nav-display {
+        transition: 0.8s cubic-bezier(0.65, 0, 0.35, 1.2) left;
+        left: 11vh;
     }
 }
