@@ -43,12 +43,14 @@ html {
     pointer-events: none;
 }
 .main-img {
-    position: relative;
+    background-image: url(../image/main-imge.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     width: 100%;
     height: 100%;
-    vertical-align: middle;
     overflow: hidden;
-    object-fit: cover;
 }
 .tip-triangle {
     position: absolute;

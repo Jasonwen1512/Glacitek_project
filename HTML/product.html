@@ -31,6 +31,7 @@
             href="../CSS/header_and_footer_for_product.css"
         />
         <link rel="stylesheet" href="../CSS/product.css" />
+        <script src="../JavaScript/product.js" defer></script>
 
         <title>Document</title>
     </head>
@@ -273,110 +274,226 @@
                     />
                 </svg>
             </div>
-            <div class="main-content">
-                <div class="bar">
-                    <h3>產品專區</h3>
-                    <nav class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="../index.html">首頁</a>
-                            </li>
-                            <li>
-                                <a href="product.html">產品專區</a>
-                            </li>
-                        </ul>
-                    </nav>
+            <div class="switch-page-area">
+                <div class="main-content" style="display: block">
+                    <div class="bar">
+                        <h3>產品專區</h3>
+                        <nav class="breadcrumb">
+                            <ul>
+                                <li>
+                                    <a href="../index.html">首頁</a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="javascript:void(0);"
+                                        onclick="changePage('product','product',null)"
+                                        >產品專區</a
+                                    >
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="main-display">
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'keyboard',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/keyboard/0.jpg"
+                                    alt="鍵盤"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>鍵盤</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'mouse',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/mouse/0.jpg"
+                                    alt="滑鼠"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>滑鼠</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'earphone',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/earphone/0.jpg"
+                                    alt="耳機"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>耳機</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'speaker',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/speaker/0.jpg"
+                                    alt="喇叭"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>喇叭</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'microphone',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/microphone/0.jpg"
+                                    alt="麥克風"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>麥克風</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'mousepad',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/mousepad/0.jpg"
+                                    alt="滑鼠墊"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>滑鼠墊</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'screen',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/screen/0.jpg"
+                                    alt="顯示器"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>顯示器</span>
+                            </div>
+                        </div>
+                        <div
+                            class="product-card"
+                            onclick="changePage('selectProduct', 'hub',null)"
+                        >
+                            <div class="product-card-img">
+                                <img
+                                    src="../image/product/hub/0.jpg"
+                                    alt="擴充塢"
+                                />
+                            </div>
+                            <div class="product-card-name">
+                                <span>擴充塢</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="main-display">
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/keyboard/0.jpg"
-                                alt="鍵盤"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>鍵盤</span>
-                        </div>
+                <div
+                    class="main-content"
+                    style="
+                        min-height: calc(100vh - 6.25vw - 121.28px);
+                        display: none;
+                    "
+                >
+                    <div class="bar">
+                        <h3>產品專區</h3>
+                        <nav class="breadcrumb">
+                            <ul>
+                                <li>
+                                    <a href="../index.html">首頁</a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="javascript:void(0);"
+                                        onclick="changePage('product','product',null)"
+                                        >產品專區</a
+                                    >
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/mouse/0.jpg"
-                                alt="滑鼠"
-                            />
+                    <div class="individual-product">
+                        <div class="individual-product-img">
+                            <img src="../image/product/keyboard/0.jpg" alt="" />
                         </div>
-                        <div class="product-card-name">
-                            <span>滑鼠</span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/earphone/0.jpg"
-                                alt="耳機"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>耳機</span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/speaker/0.jpg"
-                                alt="喇叭"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>喇叭</span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/microphone/0.jpg"
-                                alt="麥克風"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>麥克風</span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/mouse-pad/0.jpg"
-                                alt="滑鼠墊"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>滑鼠墊</span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/screen/0.jpg"
-                                alt="顯示器"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>顯示器</span>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img
-                                src="../image/product/hub/0.jpg"
-                                alt="擴充塢"
-                            />
-                        </div>
-                        <div class="product-card-name">
-                            <span>擴充塢</span>
+                        <div class="individual-product-content">
+                            <div class="individual-product-content-title">
+                                glacitek 機械式鍵盤G7
+                            </div>
+                            <div class="individual-product-content-text">
+                                <div class="description">
+                                    搭載磁軸高速回饋技術，支援全鍵無衝與多段手感調整，結合北歐極簡外觀與未來感光效，為專業與美感而生。
+                                </div>
+                                <div class="minus_and_plus-and-price">
+                                    <div class="minus_and_plus">
+                                        <div class="minus">-</div>
+                                        <div class="amount">1</div>
+                                        <div class="plus">+</div>
+                                    </div>
+                                    <div class="price">$ 3200</div>
+                                </div>
+                            </div>
+                            <button class="add_to_cart">加入購物車</button>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="main-content" style="display: none">
+                    <div class="bar">
+                        <h3>產品專區</h3>
+                        <nav class="breadcrumb">
+                            <ul>
+                                <li>
+                                    <a href="../index.html">首頁</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">產品專區</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="slelect_product">
+                        <div class="select-card">
+                            <div class="select-card-img">
+                                <img
+                                    src="../image/product/keyboard/0.jpg"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="select-card-content">
+                                <div class="select-card-name">商品1</div>
+                                <div class="select-card-price">$ 3000</div>
+                                <div class="select-card-amount_button">
+                                    <button class="minus">-</button>
+                                    <div class="amount">1</div>
+                                    <button class="plus">+</button>
+                                </div>
+                                <button class="select-card-add_to_cart">
+                                    加入購物車
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </main>
         <footer class="main-footer">

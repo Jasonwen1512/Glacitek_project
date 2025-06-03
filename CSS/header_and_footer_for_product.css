@@ -185,9 +185,11 @@ select {
     display: none;
 }
 #switch-hb:checked ~ .menu {
+    position: fixed;
     transform: translateY(62px);
 }
 #switch-hb:checked ~ .overlay {
+    position: fixed;
     height: 100vh;
 }
 .menu,

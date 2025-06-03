@@ -198,7 +198,7 @@ const scrollUserShareContent = (e, index) => {
 let autoScrollUserShareContent = setInterval(() => {
     scrollUserShareContent(null, count);
     count++;
-    // +1是為了讓圖片輪播到最後一組（第一組的copy）
+    // +1 是為了讓圖片輪播到最後一組（第一組的copy）
     if (count >= userShareListA.length + 1) {
         count = 1; // 重置計數器，回到第一組
     }
