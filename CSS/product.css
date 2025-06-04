@@ -233,7 +233,7 @@ h3::after {
 }
 .individual-product-img {
     width: 40%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1.2 / 1;
 }
 .individual-product-img img {
     width: 100%;
@@ -246,6 +246,8 @@ h3::after {
     display: flex;
 }
 .individual-product-content {
+    width: 60%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -254,6 +256,8 @@ h3::after {
 }
 .individual-product-content-title {
     font-size: 1.4583vw;
+    /* font-weight: 600; */
+    color: #004a7c;
 }
 .individual-product-content-text {
     display: flex;
@@ -273,7 +277,7 @@ h3::after {
     align-items: center;
 }
 .minus_and_plus-and-price .minus_and_plus {
-    width: 70%;
+    width: 50%;
     height: 40px;
 }
 .minus_and_plus-and-price .minus,

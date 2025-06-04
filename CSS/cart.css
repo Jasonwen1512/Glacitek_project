@@ -1,0 +1,190 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    all: unset;
+    display: block;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+.main-content {
+    width: 62.5%;
+    margin: 6.25% auto;
+}
+h3 {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.734vw;
+    font-weight: 400;
+    color: #004a7c;
+    position: relative;
+}
+.main-content {
+    width: 62.5%;
+    margin: 6.25% auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cart-title {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.734vw;
+    font-weight: 400;
+    color: #004a7c;
+    position: relative;
+}
+.cart-content {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-top: 3.125%;
+    padding: 6.25%;
+}
+.product-area {
+}
+
+.product-card {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    margin-bottom: 6%;
+    position: relative;
+}
+/* .product-card:last-child::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+} */
+.product-card-img {
+    width: 50%;
+}
+.product-card-img img {
+    width: 100%;
+    vertical-align: middle;
+    height: auto;
+    aspect-ratio: 1.2/1;
+}
+.product-card-info {
+    width: 100%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    position: relative;
+}
+.product-card-title {
+    font-size: 2rem;
+    /* font-weight: 600; */
+    color: #004a7c;
+}
+.product-card-title::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #004a7c;
+    position: absolute;
+    top: 20%;
+    left: 0;
+}
+.product-card-price {
+    font-size: 1.5rem;
+    color: #000000;
+    position: absolute;
+    top: 35%;
+}
+.amount-button_and_total-price {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+}
+.amount-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* gap: 10px; */
+}
+.minus,
+.amount,
+.plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2% 0;
+    font-size: 1.2rem;
+}
+.minus {
+    width: 16%;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-radius: 6px 0 0 6px;
+    cursor: pointer;
+}
+.amount {
+    width: 28%;
+    border: 1px solid #000000;
+}
+.plus {
+    width: 16%;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+.total-price {
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+    position: relative;
+}
+.total-price > span:nth-child(1) {
+    position: relative;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* vertical-align: bottom; */
+}
+.price {
+    font-size: 1.5rem;
+}
+.order-area {
+    position: relative;
+    margin-top: 10%;
+}
+.order-area::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    position: absolute;
+    top: -2vw;
+    left: 0;
+}
+.order-title {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.order-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
