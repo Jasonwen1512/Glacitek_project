@@ -26,8 +26,10 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="../CSS/header_and_footer_for_help.css" />
+        <link rel="stylesheet" href="../CSS/header_and_footer.css" />
+        <link rel="stylesheet" href="../CSS/header_and_footer_help.css" />
         <link rel="stylesheet" href="../CSS/help.css" />
+        <script src="../JavaScript/help.js" defer></script>
 
         <title>Glacitek</title>
     </head>
@@ -285,18 +287,130 @@
                     </nav>
                 </div>
                 <div class="help-area">
-                    <div class="buy_and_pay">
-                        <div class="title">購買與付款</div>
-                        <div class="content"></div>
+                    <div id="buy_and_pay">
+                        <div class="help-area-title">購買與付款</div>
+                        <div class="help-area-content">
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span> Q：可以使用哪些付款方式？ </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span>
+                                        <ul>
+                                            A：我們目前支援以下付款方式
+                                            <li>
+                                                信用卡（VISA / MasterCard /
+                                                JCB）
+                                            </li>
+                                            <li>LINE Pay</li>
+                                            <li>
+                                                超商代碼繳費（7-11、全家、萊爾富、OK）
+                                            </li>
+                                            <li>ATM 虛擬帳號轉帳</li>
+                                        </ul>
+                                        <p>
+                                            完成付款後系統會立即確認訂單，並進行後續出貨作業。
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span>
+                                        Q：下單後想修改地址或付款方式可以嗎？
+                                    </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span
+                                        >A：若您的訂單尚未出貨，可以透過email聯繫我們協助修改。請備註您的訂單編號與欲更改內容，以便我們快速處理。若已出貨則無法變更，敬請見諒。</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="delivery_and_fare">
-                        <div class="title">配送與運費</div>
-                        <div class="content"></div>
+                    <div id="delivery_and_fare">
+                        <div class="help-area-title">配送與運費</div>
+                        <div class="help-area-content">
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span> Q：運費怎麼計算？滿額免運嗎？ </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span>
+                                        A：單筆訂單滿 NT$5,000
+                                        免運費，未滿則收取 NT$70
+                                        運費（黑貓宅急便）。活動期間可能會有其他免運條件，詳情請參考最新消息。
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span> Q：多久可以收到商品？ </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span
+                                        >A：我們於工作日每日 15:00
+                                        前完成付款之訂單，當天出貨。出貨後約需
+                                        1–2 個工作天送達（偏遠地區與離島可能需多
+                                        1–2 日）。</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="returns_and_warranty">
-                        <div class="title">退換貨與保固</div>
-                        <div class="content"></div>
+                    <div id="returns_and_warranty">
+                        <div class="help-area-title">退換貨與保固</div>
+                        <div class="help-area-content">
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span> Q：收到的商品有問題怎麼辦？ </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span
+                                        >A：如有瑕疵、錯誤或缺件，請於收到後 7
+                                        日內拍照存證並與我們聯繫。我們會協助退換貨或補寄缺件，運費由我們負擔。</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span> Q：退貨流程是什麼？ </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span
+                                        >A：聯繫客服 > 提供退貨原因與照片 >
+                                        客服確認 > 退貨地址與指示 > 完成退貨 >
+                                        系統退款（3–5 工作日）。</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="help-area-content-card">
+                                <div class="help-area-content-cardp-Q">
+                                    <span> Q：產品保固多久？ </span>
+                                </div>
+                                <div class="help-area-content-card-A">
+                                    <span>
+                                        <ul>
+                                            A：
+                                            <li>鍵盤／滑鼠／耳機：1 年保固</li>
+                                            <li>
+                                                Hub / 支架 / 其他配件：6
+                                                個月保固
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            保固期間內若非人為損壞可享免費維修或更換，請保留購買證明。
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="help-nav-bar">
+                    <div class="help-nav-bar-item">購買與付款</div>
+                    <div class="help-nav-bar-item">配送與運費</div>
+                    <div class="help-nav-bar-item">退換貨與保固</div>
                 </div>
             </div>
         </main>

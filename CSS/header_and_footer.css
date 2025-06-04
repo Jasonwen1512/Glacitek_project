@@ -30,6 +30,7 @@ main {
 }
 .main-bg {
     width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -38,6 +39,8 @@ main {
 }
 .main-bg svg {
     width: 100%;
+    /* height: auto; */
+    min-height: 100vh;
 }
 .main-content {
     position: relative;
@@ -306,7 +309,7 @@ select {
     /*平板（直）~ 平板（橫）：電腦header、手機footer*/
     main {
         position: relative;
-        /* top: 0px; */
+        top: 0px;
     }
     #switch-hb,
     .overlay,
@@ -389,29 +392,8 @@ select {
     #switch-hb:checked ~ .menu {
         transform: translateY(0px);
     }
-    /* 預設slide-tips位置 */
-    .menu .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1024) * 2));
-        width: var(--the-slide-tips-width-1024);
-    }
-    /* slide-tips移動 */
-    .menu .index:hover ~ .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1024) * 3));
-    }
-    .menu .about-us:hover ~ .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1024) * 1));
-    }
-    .menu .help:hover ~ .slide-tips {
-        right: calc(30%);
-    }
-    /* 移到購物車 */
-    .main-header-container:has(.cart:hover) + .menu .slide-tips {
-        right: calc(-40px);
-        width: 40px;
-    }
-
     .main-footer {
-        /* top: 0; */
+        top: 0;
     }
 }
 
@@ -466,21 +448,6 @@ select {
     .menu a {
         width: var(--the-slide-tips-width-1400);
     }
-    /* 預設slide-tips位置 */
-    .menu .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1400) * 2));
-        width: var(--the-slide-tips-width-1400);
-    }
-    /* slide-tips移動 */
-    .menu .index:hover ~ .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1400) * 3));
-    }
-    .menu .about-us:hover ~ .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1400) * 1));
-    }
-    .menu .help:hover ~ .slide-tips {
-        right: calc(30%);
-    }
 }
 
 @media screen and (min-width: 1550px) {
@@ -495,21 +462,6 @@ select {
     }
     .menu a {
         width: var(--the-slide-tips-width-1550);
-    }
-    /* 預設slide-tips位置 */
-    .menu .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1550) * 2));
-        width: var(--the-slide-tips-width-1550);
-    }
-    /* slide-tips移動 */
-    .menu .index:hover ~ .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1550) * 3));
-    }
-    .menu .about-us:hover ~ .slide-tips {
-        right: calc(30% + calc(var(--the-slide-tips-width-1550) * 1));
-    }
-    .menu .help:hover ~ .slide-tips {
-        right: calc(30%);
     }
 }
 

@@ -14,7 +14,7 @@ h6 {
 }
 .main-content {
     width: 62.5%;
-    margin: 3.125% auto;
+    margin: 6.25% auto;
 }
 h3 {
     font-family: "Noto Serif TC", serif;
@@ -69,8 +69,8 @@ h3::after {
 .main-display {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 7.5vw;
-    margin-top: 2.5%;
+    gap: 5.5vw;
+    margin-top: 3.125%;
 }
 .product-card {
     position: relative;
@@ -151,8 +151,12 @@ h3::after {
     height: 100%;
     object-fit: cover;
     vertical-align: middle;
-    border-radius: 2%;
+    /* border-radius: 2%; */
     cursor: pointer;
+    transition: transform 0.3s;
+}
+.select-card-img img:hover {
+    transform: scale(1.05);
 }
 .select-card-content {
     display: flex;
@@ -160,9 +164,11 @@ h3::after {
     gap: 10px;
 }
 .select-card-name {
+    font-size: 1.2rem;
     margin-top: 5%;
 }
 .select-card-price {
+    font-size: 1.1rem;
 }
 .select-card-amount_button {
     display: flex;
@@ -211,13 +217,18 @@ h3::after {
     padding: 2.5% 0;
     cursor: pointer;
 }
+.select-card-add_to_cart:hover {
+    background-color: #2a6f9f;
+}
 
 .individual-product {
     width: 100%;
-    margin: 2.5% auto 0;
+    /* margin: 2.5% auto 0; */
+    margin: auto;
     display: flex;
     /* gap: 5%; */
     border: 1px solid #ccc;
+    background-color: #fff;
     /* padding: 2.5%; */
 }
 .individual-product-img {
@@ -287,4 +298,7 @@ h3::after {
     border-radius: 6px;
     padding: 1.5% 0;
     cursor: pointer;
+}
+.add_to_cart:hover {
+    background-color: #2a6f9f;
 }

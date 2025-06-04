@@ -380,7 +380,7 @@ const changePage = (targetPage, selectProduct, targetProduct) => {
                 </div>`;
         switchPageArea.innerHTML = html;
     } else if (targetPage === "selectProduct") {
-        let chineseName = ";";
+        let chineseName = "";
         switch (selectProduct) {
             case "keyboard":
                 chineseName = "鍵盤";
@@ -475,19 +475,17 @@ const changePage = (targetPage, selectProduct, targetProduct) => {
                 let target_product = productData[selectProduct].find(
                     (product) => product.name === selectCardImg.alt
                 );
-                console.log(
-                    productData[selectProduct],
-                    selectProduct,
-                    selectCardImg,
-                    selectCardImg.alt,
-                    target_product
-                );
+                // console.log(
+                //     productData[selectProduct],
+                //     selectProduct,
+                //     selectCardImg,
+                //     selectCardImg.alt,
+                //     target_product
+                // );
                 html = "";
                 html += `<div
                             class="main-content"
-                            style="
-                                min-height: calc(100vh - 6.25vw - 121.28px);
-                            "
+                            style="min-height: calc(100vh - 12.5vw - 61.69px); display: flex; flex-direction: column;"
                         >
                             <div class="bar">
                                 <h3>產品專區</h3>

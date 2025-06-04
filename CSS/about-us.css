@@ -14,7 +14,7 @@ h6 {
 }
 .main-content {
     width: 62.5%;
-    margin: 3.125% auto;
+    margin: 6.25% auto;
 }
 h3 {
     font-family: "Noto Serif TC", serif;
@@ -98,7 +98,7 @@ h3::after {
     text-align: start;
 }
 .about-us-card-img {
-    width: 40%;
+    width: 60%;
 }
 .about-us-card-img img {
     width: 100%;
@@ -126,7 +126,7 @@ h3::after {
     top: 0;
 }
 .about-us-card-content-text {
-    font-size: 1vw;
+    font-size: 1.3rem;
     line-height: 1.5;
     position: relative;
     top: 15%;

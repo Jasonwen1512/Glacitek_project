@@ -629,7 +629,8 @@ h2 {
     transition: 0.2s;
 }
 .section-nav span {
-    font-size: 0.83333vw;
+    /* font-size: 0.83333vw; */
+    font-size: 1rem;
 }
 .section-nav a:hover .tip-area {
     width: 0.5208vw;

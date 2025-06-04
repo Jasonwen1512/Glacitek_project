@@ -1,0 +1,68 @@
+:root {
+    --header-background-color: #005691;
+    --header-color: #fafafa;
+    --footer-background-color: #dce7ef;
+    --footer-color: #333;
+    --menu-color: #0b3c61;
+    --the-slide-tips-width-1024: 15%;
+    --the-slide-tips-width-1400: 12%;
+    --the-slide-tips-width-1550: 10%;
+    --slide-tips-background-color: #4ca9e2;
+}
+@media screen and (min-width: 1024px) {
+    /*平板（直）~ 平板（橫）*/
+    /* 預設slide-tips位置 */
+    .menu .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1024) * 3));
+        width: var(--the-slide-tips-width-1024);
+    }
+    /* slide-tips移動 */
+    .menu .product:hover ~ .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1024) * 2));
+    }
+    .menu .about-us:hover ~ .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1024) * 1));
+    }
+    .menu .help:hover ~ .slide-tips {
+        right: calc(30%);
+    }
+    /* 移到購物車 */
+    .main-header-container:has(.cart:hover) + .menu .slide-tips {
+        right: calc(-40px);
+        width: 40px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    /* 預設slide-tips位置 */
+    .menu .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1400) * 3));
+        width: var(--the-slide-tips-width-1400);
+    }
+    /* slide-tips移動 */
+    .menu .product:hover ~ .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1400) * 2));
+    }
+    .menu .about-us:hover ~ .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1400) * 1));
+    }
+    .menu .help:hover ~ .slide-tips {
+        right: calc(30%);
+    }
+}
+@media screen and (min-width: 1550px) {
+    /* 預設slide-tips位置 */
+    .menu .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1550) * 3));
+        width: var(--the-slide-tips-width-1550);
+    }
+    /* slide-tips移動 */
+    .menu .product:hover ~ .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1550) * 2));
+    }
+    .menu .about-us:hover ~ .slide-tips {
+        right: calc(30% + calc(var(--the-slide-tips-width-1550) * 1));
+    }
+    .menu .help:hover ~ .slide-tips {
+        right: calc(30%);
+    }
+}

@@ -103,6 +103,7 @@ let newsButtonRightPath = document.querySelector(".news-button-right path");
 // 欲移動的新聞區塊
 let newsItemW90 = document.querySelector(".news-item-w90");
 let newsItemCard = document.querySelector(".news-item-card");
+let newsAreaItem = document.querySelector(".news-area-item");
 
 let newsCurrentLeft = 0; // 目前移動的距離
 let newsMovefrequency = 0; // 移動的格數
@@ -112,7 +113,14 @@ const newstHandleLeftClick = () => {
     if (newsItemW90 && newsItemCard) {
         // 新聞左側按鈕可按
         if (newsMovefrequency > 0) {
-            let moveWidth = newsItemCard.offsetWidth + 120;
+            // 抓出元素寬度與 margin-right 的實際數值
+            const cardWidth = newsItemCard.offsetWidth;
+            const style = window.getComputedStyle(newsAreaItem);
+            const marginRight = parseFloat(style.marginRight); // 例如 "72px" -> 72
+            // console.log(marginRight);
+
+            const moveWidth = cardWidth + marginRight;
+
             newsCurrentLeft += moveWidth;
             newsItemW90.style.left = `${newsCurrentLeft}px`;
             newsButtonLeft.classList.remove("btn-ok");
@@ -135,8 +143,14 @@ const newstHandleRightClick = () => {
     if (newsItemW90 && newsItemCard) {
         // 新聞右側按鈕可按
         if (newsMovefrequency < newsAmount - 1) {
-            // console.log(newsMovefrequency);
-            let moveWidth = newsItemCard.offsetWidth + 120;
+            // 抓出元素寬度與 margin-right 的實際數值
+            const cardWidth = newsItemCard.offsetWidth;
+            const style = window.getComputedStyle(newsAreaItem);
+            const marginRight = parseFloat(style.marginRight); // 例如 "72px" -> 72
+            // console.log(marginRight);
+
+            const moveWidth = cardWidth + marginRight;
+
             newsCurrentLeft -= moveWidth;
             newsItemW90.style.left = `${newsCurrentLeft}px`;
             newsButtonLeft.classList.remove("btn-ok");
@@ -212,6 +226,26 @@ let sectionNavTipArea = document.querySelectorAll(".section-nav .tip-area");
 let sectionNavSpan = document.querySelectorAll(".section-nav span");
 
 const pageScroll = () => {
+    // console.log("screenwidth:", window.innerWidth);
+    let breakpoint1 = 850; // 產品專區
+    let breakpoint2 = 1600; // 最新資訊
+    let breakpoint3 = 2435; // 使用者心得分享
+    // 這是1100px之下的標準
+    if (window.innerWidth <= 1100) {
+        breakpoint1 = 630;
+        breakpoint2 = 1102;
+        breakpoint3 = 1616;
+        // 這是1280px之下的標準
+    } else if (window.innerWidth <= 1280) {
+        breakpoint1 = 750;
+        breakpoint2 = 1266;
+        breakpoint3 = 1866;
+        // 這是1540px之下的標準
+    } else if (window.innerWidth <= 1540) {
+        breakpoint1 = 850;
+        breakpoint2 = 1420;
+        breakpoint3 = 2140;
+    }
     let scrollTop =
         window.scrollY ||
         window.pageYOffset ||
@@ -220,12 +254,14 @@ const pageScroll = () => {
     // 用百分比計算，判斷頁面大致滾動到哪裡
     // 850px 1600px 2435px <= 這是1920px之下的標準
     let triggerPoints = {
-        section1: (850 / totalHeight) * 100, // 產品專區
-        section2: (1600 / totalHeight) * 100, // 最新資訊
-        section3: (2435 / totalHeight) * 100, // 使用者心得分享
+        section1: (breakpoint1 / totalHeight) * 100, // 產品專區
+        section2: (breakpoint2 / totalHeight) * 100, // 最新資訊
+        section3: (breakpoint3 / totalHeight) * 100, // 使用者心得分享
     };
     let scrollPrecent = (scrollTop / totalHeight) * 100;
-    console.log(scrollTop, window.innerHeight, totalHeight);
+    // console.log(scrollTop, window.innerHeight, totalHeight, scrollPrecent);
+    // console.log(triggerPoints);
+    // console.log("scrollTop:", scrollTop, "scrollPrecent:", scrollPrecent);
 
     // 滑動超過2500時，當成到達"使用者心得分享"區塊
     if (scrollPrecent >= triggerPoints.section3) {
