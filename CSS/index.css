@@ -90,6 +90,8 @@ html {
     font-weight: bold;
     letter-spacing: 3px;
 }
+.tip-vertical {
+}
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -688,6 +690,54 @@ a span.op1 {
 .back-to-top svg {
     width: 66%;
     height: 66%;
+}
+@media screen and (max-width: 1920px) {
+}
+@media screen and (max-width: 1700px) {
+}
+@media screen and (max-width: 1550px) {
+}
+@media screen and (max-width: 1400px) {
+}
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 1024px) {
+    .main-img {
+        background-attachment: scroll;
+    }
+    .tip-triangle {
+        /* display: none; */
+    }
+    .slogan-content {
+        width: 80%;
+        top: 52vh;
+    }
+    .slogan {
+        font-size: 3rem;
+        text-align: end;
+    }
+    .slogan-content::before {
+        width: 40%;
+        left: unset;
+        right: -60%;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            #fff 100%
+        );
+        transform-origin: right center;
+    }
+    .slogan-content::after {
+        left: 5%;
+        background: linear-gradient(
+            90deg,
+            #fff 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform-origin: left center;
+    }
 }
 /* 電腦版，只有電腦版header才改變狀態 */
 @media screen and (min-width: 1024px) {

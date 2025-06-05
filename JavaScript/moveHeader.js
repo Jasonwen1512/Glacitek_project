@@ -22,15 +22,15 @@ const pageScrollForMoveHeader = () => {
     // console.log("scrollTop:", scrollTop);
     // 這是1100px之下的標準
     if (window.innerWidth <= 1100) {
-        console.log("1024px以下");
+        // console.log("1024px以下");
         breakpoint3 = 630;
         // 這是1280px之下的標準
     } else if (window.innerWidth <= 1280) {
-        console.log("1280px以下");
+        // console.log("1280px以下");
         breakpoint3 = 750;
         // 這是1540px之下的標準
     } else if (window.innerWidth <= 1540) {
-        console.log("1540px以下");
+        // console.log("1540px以下");
         breakpoint3 = 850;
     }
 };

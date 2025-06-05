@@ -485,7 +485,7 @@ const changePage = (targetPage, selectProduct, targetProduct) => {
                 html = "";
                 html += `<div
                             class="main-content"
-                            style="min-height: calc(100vh - 12.5vw - 61.69px); display: flex; flex-direction: column;"
+                            style="display: flex; flex-direction: column;"
                         >
                             <div class="bar">
                                 <h3>產品專區</h3>
