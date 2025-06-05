@@ -172,7 +172,8 @@ select {
     background-color: #fff;
     color: var(--header-background-color);
     border-radius: 8px;
-    text-indent: 32px;
+    padding-left: 36px;
+    /* text-indent: 32px; */
 }
 .overlay {
     position: absolute;
@@ -242,6 +243,7 @@ select {
 }
 .main-footer-container .icon-text,
 .main-footer-container .community-icon,
+.main-footer-container .community-icon span a,
 .main-footer-container .community-icon span,
 .main-footer-container .info,
 .main-footer-container .contact {
@@ -377,6 +379,7 @@ select {
     }
     .menu > div input {
         padding: 4px;
+        padding-left: 36px;
     }
     .menu .search {
         width: 90%;
@@ -403,7 +406,7 @@ select {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 10px 65px;
+        padding: 15px 65px;
     }
     .main-footer-container .icon {
         gap: 5px;

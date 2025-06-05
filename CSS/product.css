@@ -134,7 +134,7 @@ h3::after {
 .slelect_product {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3vw;
+    gap: 1vw;
     margin-top: 2.5%;
 }
 .select-card {
@@ -305,4 +305,33 @@ h3::after {
 }
 .add_to_cart:hover {
     background-color: #2a6f9f;
+}
+@media screen and (max-width: 1920px) {
+}
+@media screen and (max-width: 1700px) {
+    .select-card-name {
+        font-size: 1rem;
+    }
+    .main-content {
+        min-height: calc(100vh - 12.5vw - 71.69px);
+    }
+}
+@media screen and (max-width: 1550px) {
+    .main-content {
+        min-height: calc(100vh - 12.5vw - 80px);
+    }
+}
+@media screen and (max-width: 1400px) {
+}
+@media screen and (max-width: 1280px) {
+    .main-content {
+        margin-top: 8.25%;
+    }
+    .slelect_product {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 1024px) {
 }

@@ -196,6 +196,11 @@ html {
     width: 100%;
     height: 2px;
     background-color: var(--split-line-color);
+    background: linear-gradient(
+        90deg,
+        var(--split-line-color) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
 }
 h2 {
     font-family: "Noto Serif TC", serif;

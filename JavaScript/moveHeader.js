@@ -18,8 +18,8 @@ const pageScrollForMoveHeader = () => {
         window.scrollY ||
         window.pageYOffset ||
         document.documentElement.scrollTop;
-    console.log("screenwidth:", window.innerWidth);
-    console.log("scrollTop:", scrollTop);
+    // console.log("screenwidth:", window.innerWidth);
+    // console.log("scrollTop:", scrollTop);
     // 這是1100px之下的標準
     if (window.innerWidth <= 1100) {
         console.log("1024px以下");
