@@ -9,6 +9,14 @@
     --the-slide-tips-width-1550: 10%;
     --slide-tips-background-color: #4ca9e2;
 }
+@font-face {
+    font-family: "Noto Sans TC";
+    src: url(../fonts/NotoSansTC-VariableFont_wght.woff2) format("woff2");
+}
+@font-face {
+    font-family: "Noto Serif TC";
+    src: url(../fonts//NotoSerifTC-VariableFont_wght.woff2) format("woff2");
+}
 * {
     padding: 0;
     margin: 0;
@@ -132,14 +140,14 @@ select {
 }
 .menu {
     width: 100%;
-    position: absolute;
+    position: fixed;
     /* bottom: 100%; */
     /* top: 100%; */
     transform: translateY(-100%);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    z-index: 2;
+    z-index: 3;
 }
 .menu div {
     border-top: 0;
@@ -176,13 +184,15 @@ select {
     /* text-indent: 32px; */
 }
 .overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 0vh;
     background-color: #0005;
     border: none;
     outline: none;
-    z-index: 1;
+    z-index: 2;
+    opacity: 0;
+    will-change: opacity;
     /* display: none; */
 }
 #switch-hb {
@@ -193,8 +203,9 @@ select {
     transform: translateY(62px);
 }
 #switch-hb:checked ~ .overlay {
-    position: fixed;
     height: 100vh;
+    opacity: 1;
+    pointer-events: auto;
 }
 .menu,
 .overlay {
@@ -314,7 +325,6 @@ select {
         top: 0px;
     }
     #switch-hb,
-    .overlay,
     .hb {
         display: none;
     }

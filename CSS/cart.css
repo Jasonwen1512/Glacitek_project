@@ -298,6 +298,11 @@ h3 {
 }
 @media screen and (max-width: 1920px) {
 }
+@media screen and (max-width: 1800px) {
+    .actual-amount {
+        font-size: 1.4rem;
+    }
+}
 @media screen and (max-width: 1720px) {
     .product-card-title {
         font-size: 1.5rem;
@@ -330,11 +335,14 @@ h3 {
     .freight {
         font-size: 1.2rem;
     }
-    .actual-amount {
-        font-size: 1.4rem;
-    }
+
     .order-submit {
         font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 1600px) {
+    .actual-amount {
+        font-size: 1.3rem;
     }
 }
 @media screen and (max-width: 1550px) {

@@ -67,11 +67,12 @@ html {
     transform: translate(-50%, 100%);
     bottom: -5px;
     z-index: 1;
+    opacity: 0;
     /* animation: float 2s ease-in-out infinite; */
 }
 .tip-triangle-display {
-    transform: translate(-50%, 0);
-    transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1.2) 1s;
+    /* transition: 0s; */
+    opacity: 1;
 }
 .tip-arrow-left,
 .tip-arrow-right,
@@ -521,8 +522,13 @@ h2 {
 }
 .community-share-content-content-icon {
     width: 8.3333%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-.community-share-content-content-icon svg {
+.community-share-content-content-icon img {
     width: 100%;
     height: 100%;
 }
@@ -708,11 +714,45 @@ a span.op1 {
         background-attachment: scroll;
     }
     .tip-triangle {
+        background-color: transparent;
+        clip-path: none;
+        bottom: unset;
+        top: 57vh;
+
         /* display: none; */
+    }
+    .tip-triangle-display {
+        transition: 0.4s 1.4s opacity;
+    }
+    .tip-text {
+        font-size: 1.2rem;
+        color: var(--main-background-color);
+    }
+    .tip-arrow-left,
+    .tip-arrow-right {
+        width: 5vw;
+    }
+    .tip-arrow-left svg,
+    .tip-arrow-right svg {
+        width: 100%;
+    }
+    .tip-arrow-left svg path,
+    .tip-arrow-right svg path {
+        stroke: var(--main-background-color);
     }
     .slogan-content {
         width: 80%;
-        top: 52vh;
+        top: 32vh;
+    }
+    .slogan-content-display {
+        transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1.5);
+    }
+    .slogan-content::before,
+    .slogan-content-display::after {
+        transition: 0.6s 0.8s;
+    }
+    .img-wrapper {
+        top: -20px;
     }
     .slogan {
         font-size: 3rem;
@@ -738,6 +778,25 @@ a span.op1 {
         );
         transform-origin: left center;
     }
+    h2 {
+        font-size: 3.5vh;
+        letter-spacing: 3px;
+    }
+    .main-display {
+        width: 100%;
+        margin: 15% auto;
+    }
+    .product-area,
+    .news-area,
+    .share-area {
+        width: 100%;
+    }
+    .product-area > h2::before,
+    .news-area > h2::before,
+    .share-area > h2::before {
+        width: 80%;
+        margin: auto;
+    }
 }
 /* 電腦版，只有電腦版header才改變狀態 */
 @media screen and (min-width: 1024px) {
@@ -751,5 +810,9 @@ a span.op1 {
     .section-nav-display {
         transition: 0.8s cubic-bezier(0.65, 0, 0.35, 1.2) left;
         left: 11vh;
+    }
+    .tip-triangle-display {
+        transform: translate(-50%, 0);
+        transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1.2) 1s;
     }
 }
