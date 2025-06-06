@@ -192,6 +192,7 @@ h3::after {
     border-bottom: 1px solid #000000;
     border-radius: 6px 0 0 6px;
     cursor: pointer;
+    aspect-ratio: 1.2/1;
 }
 .amount {
     width: 28%;
@@ -204,6 +205,7 @@ h3::after {
     border-bottom: 1px solid #000000;
     border-radius: 0 6px 6px 0;
     cursor: pointer;
+    aspect-ratio: 1.2/1;
 }
 .select-card-add_to_cart {
     display: flex;

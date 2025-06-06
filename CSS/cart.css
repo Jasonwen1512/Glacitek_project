@@ -224,7 +224,9 @@ h3 {
     border-radius: 5px;
     padding: 4px;
     resize: none;
+    margin-top: 1%;
     margin-bottom: 5%;
+    font-size: 1rem;
 }
 .buyer-info-content textarea {
     /* min-height: 30%; */
@@ -357,6 +359,10 @@ h3 {
     }
     .actual-amount {
         font-size: 1.1rem;
+    }
+    .buyer-info-content input,
+    .buyer-info-content textarea {
+        font-size: 0.9rem;
     }
 }
 @media screen and (max-width: 1340px) {

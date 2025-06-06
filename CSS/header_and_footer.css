@@ -147,7 +147,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    z-index: 3;
+    z-index: 4;
 }
 .menu div {
     border-top: 0;
@@ -190,7 +190,7 @@ select {
     background-color: #0005;
     border: none;
     outline: none;
-    z-index: 2;
+    z-index: 3;
     opacity: 0;
     will-change: opacity;
     /* display: none; */
@@ -209,7 +209,7 @@ select {
 }
 .menu,
 .overlay {
-    transition: 0.3s;
+    transition: 0.35s;
 }
 .menu.index {
     display: none;

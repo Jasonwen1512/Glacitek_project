@@ -198,10 +198,12 @@ html {
     top: calc(2.6vw + 40px);
     width: 100%;
     height: 2px;
-    background-color: var(--split-line-color);
+    /* background-color: var(--split-line-color); */
     background: linear-gradient(
         90deg,
-        var(--split-line-color) 0%,
+        rgba(255, 255, 255, 0) 0%,
+        var(--split-line-color) 30%,
+        var(--split-line-color) 70%,
         rgba(255, 255, 255, 0) 100%
     );
 }
@@ -709,7 +711,19 @@ a span.op1 {
 }
 @media screen and (max-width: 1200px) {
 }
-@media screen and (max-width: 1024px) {
+@media screen and (width < 1024px) {
+    .section-nav {
+        display: none;
+    }
+    /* 取消電腦版往下拉產生header的動畫效果 */
+    .menu.header-position-fixed {
+        transform: translateY(-100%);
+    }
+    .main-bg svg {
+        /* height: 100%; */
+        position: relative;
+        top: 60vh;
+    }
     .main-img {
         background-attachment: scroll;
     }
@@ -741,7 +755,7 @@ a span.op1 {
         stroke: var(--main-background-color);
     }
     .slogan-content {
-        width: 80%;
+        width: 350px;
         top: 32vh;
     }
     .slogan-content-display {
@@ -752,11 +766,12 @@ a span.op1 {
         transition: 0.6s 0.8s;
     }
     .img-wrapper {
-        top: -20px;
+        top: -15px;
     }
     .slogan {
         font-size: 3rem;
         text-align: end;
+        line-height: 156.875%;
     }
     .slogan-content::before {
         width: 40%;
@@ -796,6 +811,30 @@ a span.op1 {
     .share-area > h2::before {
         width: 80%;
         margin: auto;
+    }
+    .product-button,
+    .news-botton {
+        display: none;
+    }
+    .product-item,
+    .news-item,
+    .share-area-item {
+        width: 90%;
+        margin: auto;
+    }
+    .exhibit-area {
+        margin-top: 40px;
+    }
+    .exhibit-area .card {
+        width: calc((100% - 20px) / 1.6);
+    }
+}
+@media screen and (max-width: 380px) {
+    .slogan-content {
+        width: 300px;
+    }
+    .slogan {
+        font-size: 2.5rem;
     }
 }
 /* 電腦版，只有電腦版header才改變狀態 */
