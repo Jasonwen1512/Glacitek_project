@@ -447,7 +447,7 @@ h2 {
 .news-button-right svg {
     width: 3.125vw;
 }
-.share-area-item {
+.share-item {
 }
 .community_and_suer-share {
     width: 90%;
@@ -818,7 +818,7 @@ a span.op1 {
     }
     .product-item,
     .news-item,
-    .share-area-item {
+    .share-item {
         width: 90%;
         margin: auto;
     }

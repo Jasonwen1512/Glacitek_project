@@ -34,7 +34,7 @@ html {
 main {
     position: relative;
     overflow: hidden;
-    top: 59.59px;
+    top: 50px;
 }
 .main-bg {
     width: 100%;
@@ -108,7 +108,7 @@ select {
     position: relative;
 }
 .main-footer {
-    top: 59.59px;
+    /* top: 59.59px; */
 }
 .main-header-container {
     background-color: var(--header-background-color);
@@ -117,7 +117,7 @@ select {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    padding: 9px;
+    padding: 3px 0px;
     /* position: relative; */
     position: fixed;
     z-index: 5;
@@ -148,6 +148,7 @@ select {
     flex-wrap: wrap;
     flex-direction: column;
     z-index: 4;
+    transition: transform 0.35s ease;
 }
 .menu div {
     border-top: 0;
@@ -186,30 +187,33 @@ select {
 .overlay {
     position: fixed;
     width: 100%;
-    height: 0vh;
-    background-color: #0005;
+    height: 100vh;
+    background-color: #0007;
     border: none;
     outline: none;
     z-index: 3;
     opacity: 0;
-    will-change: opacity;
-    /* display: none; */
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    /* 加了這個屬性在手機（ios）上點擊overlay時才不會閃爍 */
+    /* -webkit-tap-highlight-color 是手機點擊元素時產生的瞬間高光 */
+    -webkit-tap-highlight-color: transparent;
 }
 #switch-hb {
     display: none;
 }
 #switch-hb:checked ~ .menu {
     position: fixed;
-    transform: translateY(62px);
+    transform: translateY(50px);
 }
 #switch-hb:checked ~ .overlay {
-    height: 100vh;
+    /* height: 100vh; */
     opacity: 1;
     pointer-events: auto;
 }
-.menu,
-.overlay {
-    transition: 0.35s;
+/* 當漢堡選單被點擊時，禁止頁面滑動 */
+body:has(#switch-hb:checked) {
+    overflow: hidden;
 }
 .menu.index {
     display: none;
@@ -254,7 +258,7 @@ select {
 }
 .main-footer-container .icon-text,
 .main-footer-container .community-icon,
-.main-footer-container .community-icon span a,
+.main-footer-container .community-icon a,
 .main-footer-container .community-icon span,
 .main-footer-container .info,
 .main-footer-container .contact {
@@ -269,7 +273,7 @@ select {
     grid-template-rows: repeat(2, 1fr);
     gap: 10px 15px;
 }
-.main-footer-container .community-icon > div span img {
+.main-footer-container .community-icon > div img {
     width: 70%;
 }
 .main-footer-container nav {
@@ -294,7 +298,7 @@ select {
         display: flex;
         gap: 10px;
     }
-    .main-footer-container .community-icon > div span img {
+    .main-footer-container .community-icon > div img {
         width: 85%;
     }
 }
