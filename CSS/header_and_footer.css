@@ -31,6 +31,12 @@
 html {
     scroll-behavior: smooth;
 }
+/* body {
+    padding-top: env(safe-area-inset-top);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+} */
 main {
     position: relative;
     overflow: hidden;
@@ -291,6 +297,9 @@ body:has(#switch-hb:checked) {
     flex-direction: column;
     gap: 2px;
 }
+.main-content {
+    min-height: calc(100vh - 14.5vw - 226px);
+}
 
 @media screen and (min-width: 500px) {
     /* footer社群icon位置調整 */
@@ -301,6 +310,16 @@ body:has(#switch-hb:checked) {
     .main-footer-container .community-icon > div img {
         width: 85%;
     }
+    .main-content {
+        min-height: calc(100vh - 14.5vw - 226px);
+    }
+}
+@media screen and (min-width: 528px) {
+    .main-content {
+        min-height: calc(100vh - 14.5vw - 214px);
+    }
+}
+@media screen and (min-width: 535px) {
 }
 
 @media screen and (min-width: 550px) {
@@ -315,6 +334,9 @@ body:has(#switch-hb:checked) {
     }
     .main-footer-container .icon-text img {
         width: 65%;
+    }
+    .main-content {
+        min-height: calc(100vh - 14.5vw - 130px);
     }
 }
 
@@ -412,6 +434,9 @@ body:has(#switch-hb:checked) {
     .main-footer {
         top: 0;
     }
+    .main-content {
+        min-height: calc(100vh - 14.5vw - 130px);
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -451,8 +476,16 @@ body:has(#switch-hb:checked) {
         right: -13px;
         background-color: var(--footer-color);
     }
-}
 
+    .main-content {
+        min-height: calc(100vh - 14.5vw - 80px);
+    }
+}
+@media screen and (min-width: 1280px) {
+    .main-content {
+        min-height: calc(100vh - 12.5vw - 80px);
+    }
+}
 @media screen and (min-width: 1400px) {
     /*：一般電腦：電腦header、電腦footer（資訊區塊加分隔線）*/
     /* header 區塊間距微調 */
@@ -480,11 +513,17 @@ body:has(#switch-hb:checked) {
     .menu a {
         width: var(--the-slide-tips-width-1550);
     }
+    .main-content {
+        min-height: calc(100vh - 12.5vw - 71.69px);
+    }
 }
 
 @media screen and (min-width: 1700px) {
     /* footer 客服信箱、服務時間 gap 間距微調 */
     .main-footer-container .contact {
         gap: 70px;
+    }
+    .main-content {
+        min-height: calc(100vh - 12.5vw - 71.69px);
     }
 }

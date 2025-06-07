@@ -309,22 +309,13 @@ h3::after {
     background-color: #2a6f9f;
 }
 @media screen and (max-width: 1920px) {
-    .main-content {
-        min-height: calc(100vh - 12.5vw - 71.69px);
-    }
 }
 @media screen and (max-width: 1700px) {
     .select-card-name {
         font-size: 1rem;
     }
-    .main-content {
-        min-height: calc(100vh - 12.5vw - 71.69px);
-    }
 }
 @media screen and (max-width: 1550px) {
-    .main-content {
-        min-height: calc(100vh - 12.5vw - 80px);
-    }
 }
 @media screen and (max-width: 1400px) {
 }
@@ -332,17 +323,11 @@ h3::after {
     .main-content {
         margin-top: 8.25%;
     }
-    .main-content {
-        min-height: calc(100vh - 14.5vw - 80px);
-    }
     .slelect_product {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 @media screen and (max-width: 1200px) {
-    .main-content {
-        min-height: calc(100vh - 14.5vw - 130px);
-    }
 }
 @media screen and (max-width: 1024px) {
 }

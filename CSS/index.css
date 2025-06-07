@@ -226,6 +226,7 @@ h2 {
     flex-direction: row;
     gap: 10px;
     transition: 0.3s;
+    will-change: transform;
 }
 .exhibit-area .card {
     width: calc((100% - 20px) / 3);
@@ -824,9 +825,31 @@ a span.op1 {
     }
     .exhibit-area {
         margin-top: 40px;
+        /* 除 3/4 是因為容器要往左移卡片本身的 3/4  */
+        /* 這樣正好留出來兩邊各 1/2 */
+        transform: translateX(calc(-1 * (((100% - 20px) / 1.5 * 0.75))));
+        /* 初始狀態（滑鼠頁）： transform: translateX(calc(-1 * (((100% - 20px) / 1.5 * 0.75))));*/
+        /* 之後每往左滑一頁： transform: translateX(
+                                calc(
+                                    -1 * (((100% - 20px) / 1.5 * 0.75 +
+                                                    (calc(n * (100% - 20px) / 1.5 + calc(n * 10px)))))
+                                )
+                            );*/
+        /* 每滑一次 n 就 +1 ，若是直接套用公式則n從0開始，若現在css設定好初始位置則 n 從 1 開始*/
     }
     .exhibit-area .card {
-        width: calc((100% - 20px) / 1.6);
+        /* 1.5：卡片本身寬度算1，兩側露出來各1/4，1 + 1/4 * 2 = 1.5 */
+        width: calc((100% - 20px) / 1.5);
+    }
+    .card-title_and_describe {
+        gap: 6px;
+    }
+    .card-title {
+        font-size: 1rem;
+    }
+    .card-describe {
+        font-size: 0.65rem;
+        line-height: 1.5;
     }
 }
 @media screen and (max-width: 380px) {
