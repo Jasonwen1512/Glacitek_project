@@ -43,6 +43,8 @@ const moveHeader = () => {
         window.pageYOffset ||
         document.documentElement.scrollTop;
     // 滾動300像素時先改變顏色（包括.slide-tips），定位往上自身的100%，不加動畫
+    // console.log(scrollTop);
+
     if (scrollTop >= breakpoint1 && !isOvertake300) {
         isOvertake300 = true;
         mainHeaderContainer.classList.add("header-position-fixed");
@@ -81,10 +83,34 @@ const moveHeader = () => {
         sectionNav.classList.remove("section-nav-display");
     }
 };
+// 控制右下角back-to-top出現，專屬於手機狀況的像素偵測點
+const backToTopDisplayPX = 250;
+let showBackToTop = false;
+const moveHeaderForPhone = () => {
+    let scrollTop =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop;
+    if (scrollTop >= backToTopDisplayPX && !showBackToTop) {
+        showBackToTop = true;
+        backToTop.classList.add("back-to-top-phone-display");
+        console.log("手機版backToTop顯示");
+    } else if (scrollTop < backToTopDisplayPX && showBackToTop) {
+        showBackToTop = false;
+        backToTop.classList.remove("back-to-top-phone-display");
+        console.log("手機版backToTop關閉");
+    }
+    // console.log(scrollTop);
+};
 const handleScrollBinding = () => {
     if (window.innerWidth < 1024) {
+        backToTop.classList.remove("back-to-top-display");
+        sectionNav.classList.remove("section-nav-display");
         window.removeEventListener("scroll", moveHeader);
+        window.addEventListener("scroll", moveHeaderForPhone);
     } else {
+        backToTop.classList.remove("back-to-top-phone-display");
+        window.removeEventListener("scroll", moveHeaderForPhone);
         window.addEventListener("scroll", moveHeader);
     }
 };

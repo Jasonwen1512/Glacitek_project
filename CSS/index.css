@@ -220,7 +220,7 @@ h2 {
     margin-top: 20px;
     position: relative;
     /* top: 60px; */
-    left: 0;
+    /* left: 0; */
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -240,13 +240,7 @@ h2 {
     z-index: 1;
     cursor: pointer;
 }
-.exhibit-area .card:hover {
-    transform: translateY(-18px);
-    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.2);
-}
-.exhibit-area .card:hover .card-img img {
-    transform: scale(1.03);
-}
+
 .card-img {
     width: 100%;
     transition: inherit;
@@ -258,9 +252,7 @@ h2 {
     object-fit: cover;
     transition: 0.3s;
 }
-.card-img img:hover {
-    transform: scale(1.03);
-}
+
 .card-title_and_describe {
     width: 100%;
     display: flex;
@@ -308,9 +300,6 @@ h2 {
     left: 10%;
     cursor: pointer;
 }
-.product-button-right:hover {
-    transform: scale(1.3);
-}
 .product-button-left,
 .product-button-right {
     transition: 0.2s;
@@ -323,14 +312,6 @@ h2 {
 .product-button .btn-ok path {
     fill: #3388bb;
 }
-.news-botton .btn-ok:hover,
-.product-button .btn-ok:hover {
-    transform: scale(1.3);
-}
-.news-botton .btn-ok:hover path,
-.product-button .btn-ok:hover path {
-    fill: #3388bb;
-}
 .news-botton .btn-disabled,
 .product-button .btn-disabled {
     cursor: default;
@@ -339,11 +320,6 @@ h2 {
 .product-button .btn-disabled path {
     fill: #b8bcbe;
 }
-.news-botton .btn-disabled:hover,
-.product-button .btn-disabled:hover {
-    transform: scale(1);
-}
-
 .exhibit-area,
 .product-button-left,
 .product-button-right {
@@ -543,7 +519,7 @@ h2 {
     flex-wrap: nowrap;
     position: relative;
     right: 0;
-    transition: 0.5s;
+    transition: transform 0.5s ease;
     /* overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
@@ -648,13 +624,7 @@ h2 {
     /* font-size: 0.83333vw; */
     font-size: 1rem;
 }
-.section-nav a:hover .tip-area {
-    width: 0.5208vw;
-    background-color: #005691;
-}
-.section-nav a:hover span {
-    opacity: 1;
-}
+
 .tip-area.display-bgc {
     width: 0.5208vw;
     background-color: #005691;
@@ -685,20 +655,68 @@ a span.op1 {
     /* right: 4.5vw; */
     transition: 1s right;
 }
-.back-to-top:hover {
-    background-color: #005691;
-    border: 1px solid #fff;
-}
-.back-to-top:hover svg path {
-    stroke: #fff;
-}
 .back-to-top-display {
     transition: 1s cubic-bezier(0.65, 0, 0.35, 1.2) right;
     right: 4.5vw;
 }
+.back-to-top-phone-display {
+    transition: 0.8s cubic-bezier(0.65, 0, 0.35, 1.2) right;
+    right: 1.5vw;
+    bottom: 30px;
+    z-index: 1;
+    width: 8vw;
+    height: 8vw;
+    border-radius: 5px;
+    /* background-color: #005691; */
+}
+.back-to-top-phone-display:active {
+    background-color: #005691;
+    border: 1px solid #fff;
+}
 .back-to-top svg {
     width: 66%;
     height: 66%;
+}
+@media (hover: hover) and (pointer: fine) {
+    .back-to-top:hover {
+        background-color: #005691;
+        border: 1px solid #fff;
+    }
+    .back-to-top:hover svg path {
+        stroke: #fff;
+    }
+    .exhibit-area .card:hover {
+        transform: translateY(-18px);
+        box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.2);
+    }
+    .exhibit-area .card:hover .card-img img {
+        transform: scale(1.03);
+    }
+    .card-img img:hover {
+        transform: scale(1.03);
+    }
+    .product-button-right:hover {
+        transform: scale(1.3);
+    }
+    .news-botton .btn-ok:hover,
+    .product-button .btn-ok:hover {
+        transform: scale(1.3);
+    }
+    .news-botton .btn-ok:hover path,
+    .product-button .btn-ok:hover path {
+        fill: #3388bb;
+    }
+    .news-botton .btn-disabled:hover,
+    .product-button .btn-disabled:hover {
+        transform: scale(1);
+    }
+    .section-nav a:hover .tip-area {
+        width: 0.5208vw;
+        background-color: #005691;
+    }
+    .section-nav a:hover span {
+        opacity: 1;
+    }
 }
 @media screen and (max-width: 1920px) {
 }
@@ -850,6 +868,112 @@ a span.op1 {
     .card-describe {
         font-size: 0.65rem;
         line-height: 1.5;
+    }
+    .news-area-item {
+        margin-top: 40px;
+    }
+    .news-item-card {
+        padding-bottom: 20px;
+    }
+    .news-item-card-text {
+        width: 70%;
+    }
+    .news-item-card-text-title {
+        font-size: 1rem;
+    }
+    .news-item-card-text-content {
+        display: none;
+    }
+    .news-item-card-date {
+        font-size: 0.8rem;
+        margin-top: auto;
+    }
+    .community-share {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        flex-direction: column;
+    }
+    .community-share-img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1.35 / 1;
+    }
+    .community-share-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .community-share-content {
+        width: 100%;
+        padding: 4% 8%;
+    }
+    .community-share-content-at_and_title_and_describe > *:not(:last-child) {
+        margin-bottom: 4%;
+    }
+    .community-share-content-at {
+        font-size: 0.8rem;
+        text-align: right;
+    }
+    .community-share-content-at::after {
+        /* display: none; */
+    }
+    .community-share-content-content-title {
+        font-size: 1rem;
+        text-align: center;
+    }
+    .community-share-content-content-describe {
+        font-size: 0.8rem;
+        /* text-align: center; */
+    }
+    .community-share-content-content-date {
+        font-size: 0.85rem;
+    }
+    .community-share-content-content-date_and_icon {
+        margin-top: 4%;
+    }
+    .user-share-content-item {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, auto);
+    }
+    .user-share-content-item .user-share-content-item-card {
+        margin: 0;
+        border: 0;
+        padding: 5px;
+    }
+    .user-share-content-item-card:not(:last-child)::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: #ddd;
+        position: relative;
+        top: 5px;
+    }
+    .user-share-content-item-card-img {
+        width: 30%;
+    }
+    .user-share-content-item-card-text {
+        width: 70%;
+        padding: 0 2.5%;
+    }
+    .user-share-content-item-card-text-name {
+        font-size: 0.9rem;
+    }
+    .user-share-content-item-card-text-title {
+        font-size: 0.7rem;
+    }
+    .user-share-content-item-card-text-star {
+        display: flex;
+        flex-direction: row;
+    }
+    .user-share-content-item-card-text-star svg {
+        width: 20%;
+    }
+    .user-share-content-item-card-text-date {
+        font-size: 0.7rem;
+        margin: auto 0;
+    }
+    .user-share-list {
+        gap: 4%;
     }
 }
 @media screen and (max-width: 380px) {

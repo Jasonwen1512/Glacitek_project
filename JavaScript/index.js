@@ -11,17 +11,24 @@ let productButtonRightPath = document.querySelector(
 let exhibitArea = document.querySelector(".exhibit-area");
 let card = document.querySelector(".card");
 
-let productCurrentLeft = 0; // 目前移動的距離
+let productTranslateX = 0; // 用來記錄 translateX 的位移量（距離）
 let productMovefrequency = 0; // 移動的格數
 let productAmount = 8; // 目前有8個產品分類（card）
+
+const updateProductTransform = () => {
+    exhibitArea.style.transform = `translateX(${productTranslateX}px)`;
+};
 const productHandleLeftClick = () => {
     if (exhibitArea && card) {
         // 產品左側按鈕可按
         if (productMovefrequency > 0) {
             // console.log(1);
-            let moveWidth = card.offsetWidth + 10;
-            productCurrentLeft += moveWidth;
-            exhibitArea.style.left = `${productCurrentLeft}px`;
+            // 如果用的是offsetWidth，回傳的是整數會有誤差
+            // 用的是getBoundingClientRect().width回傳的則是浮點數
+            let moveWidth = card.getBoundingClientRect().width + 10;
+            productTranslateX += moveWidth;
+            updateProductTransform();
+            // exhibitArea.style.left = `${productCurrentLeft}px`;
 
             // productButtonLeftPath.style.fill = "#3388BB";
             // productButtonRightPath.style.fill = "#3388BB";
@@ -50,9 +57,10 @@ const productHandleRightClick = () => {
     if (exhibitArea && card) {
         // 產品右側按鈕可按
         if (productMovefrequency < productAmount - 3) {
-            let moveWidth = card.offsetWidth + 10;
-            productCurrentLeft -= moveWidth;
-            exhibitArea.style.left = `${productCurrentLeft}px`;
+            let moveWidth = card.getBoundingClientRect().width + 10;
+            productTranslateX -= moveWidth;
+            updateProductTransform();
+            // exhibitArea.style.left = `${productCurrentLeft}px`;
 
             // productButtonLeftPath.style.fill = "#3388BB";
             // productButtonRightPath.style.fill = "#3388BB";
@@ -105,24 +113,29 @@ let newsItemW90 = document.querySelector(".news-item-w90");
 let newsItemCard = document.querySelector(".news-item-card");
 let newsAreaItem = document.querySelector(".news-area-item");
 
-let newsCurrentLeft = 0; // 目前移動的距離
+let newsTranslateX = 0; // 目前移動距離
 let newsMovefrequency = 0; // 移動的格數
 let newsAmount = 3; //目前有3塊新聞項目（news-area-item）
 
+const updateNewsTransform = () => {
+    newsItemW90.style.transform = `translateX(${newsTranslateX}px)`;
+};
 const newstHandleLeftClick = () => {
     if (newsItemW90 && newsItemCard) {
         // 新聞左側按鈕可按
         if (newsMovefrequency > 0) {
             // 抓出元素寬度與 margin-right 的實際數值
-            const cardWidth = newsItemCard.offsetWidth;
+            const cardWidth = newsItemCard.getBoundingClientRect().width;
             const style = window.getComputedStyle(newsAreaItem);
             const marginRight = parseFloat(style.marginRight); // 例如 "72px" -> 72
             // console.log(marginRight);
 
             const moveWidth = cardWidth + marginRight;
 
-            newsCurrentLeft += moveWidth;
-            newsItemW90.style.left = `${newsCurrentLeft}px`;
+            newsTranslateX += moveWidth;
+            updateNewsTransform();
+
+            // newsItemW90.style.left = `${newsCurrentLeft}px`;
             newsButtonLeft.classList.remove("btn-ok");
             newsButtonRight.classList.remove("btn-ok");
             newsButtonLeft.classList.add("btn-ok");
@@ -144,15 +157,17 @@ const newstHandleRightClick = () => {
         // 新聞右側按鈕可按
         if (newsMovefrequency < newsAmount - 1) {
             // 抓出元素寬度與 margin-right 的實際數值
-            const cardWidth = newsItemCard.offsetWidth;
+            const cardWidth = newsItemCard.getBoundingClientRect().width;
             const style = window.getComputedStyle(newsAreaItem);
             const marginRight = parseFloat(style.marginRight); // 例如 "72px" -> 72
             // console.log(marginRight);
 
             const moveWidth = cardWidth + marginRight;
 
-            newsCurrentLeft -= moveWidth;
-            newsItemW90.style.left = `${newsCurrentLeft}px`;
+            newsTranslateX -= moveWidth;
+            updateNewsTransform();
+
+            // newsItemW90.style.left = `${newsCurrentLeft}px`;
             newsButtonLeft.classList.remove("btn-ok");
             newsButtonRight.classList.remove("btn-ok");
             newsButtonLeft.classList.add("btn-ok");
@@ -184,26 +199,25 @@ let userShareListASvgCircle = document.querySelectorAll(
     ".user-share-list a svg circle"
 );
 let count = 1; // 計數器，從1開始，因為第一個是預設顯示的
+const totalSlides = userShareListA.length; // 總頁數（不包含複製頁）
 const scrollUserShareContent = (e, index) => {
     if (e) e.preventDefault();
     // console.log(count);
 
     count = index; // 重置計數器，把count設置為手動點擊的index
+    // 移除 transition 以進行瞬間跳轉（只有在複製頁時使用）
     userShareContent.classList.remove("remove-transition");
-    userShareContent.style.right = `${index * 100}%`;
+    userShareContent.style.transform = `translateX(-${index * 100}%)`;
+    // 小圓點更新
     userShareListASvgCircle.forEach((circle, i) => {
-        if (i === index) {
-            circle.style.fill = "#004A7C";
-        } else {
-            circle.style.fill = "#D9D9D9";
-        }
+        circle.style.fill = i === index % totalSlides ? "#004A7C" : "#D9D9D9";
     });
-    if (index === userShareListASvgCircle.length) {
+    if (index === totalSlides) {
         // console.log("這是第一組的copy");
         userShareListASvgCircle[0].style.fill = "#004A7C";
         setTimeout(() => {
             userShareContent.classList.add("remove-transition");
-            userShareContent.style.right = "0%"; // 回到第一組
+            userShareContent.style.transform = "translateX(0%)"; // 回到第一組
             // console.log(userShareContent.style);
         }, 500); // 短時間（500毫秒）内取消動畫，從"第一組的copy"跳到"真的第一組"達成無縫動畫的效果
     }
@@ -213,15 +227,17 @@ let autoScrollUserShareContent = setInterval(() => {
     scrollUserShareContent(null, count);
     count++;
     // +1 是為了讓圖片輪播到最後一組（第一組的copy）
-    if (count >= userShareListA.length + 1) {
+    if (count > totalSlides) {
         count = 1; // 重置計數器，回到第一組
     }
-}, 2500);
+}, 2500); // 每2.5秒輪播一次
+// clearInterval(autoScrollUserShareContent);
 // 在頁面跳轉時清掉 autoScrollUserShareContent
 window.addEventListener("beforeunload", () => {
     clearInterval(autoScrollUserShareContent);
 });
 // ↑使用者分享區塊
+
 let sectionNavTipArea = document.querySelectorAll(".section-nav .tip-area");
 let sectionNavSpan = document.querySelectorAll(".section-nav span");
 
