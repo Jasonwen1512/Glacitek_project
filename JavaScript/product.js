@@ -249,81 +249,10 @@ const findChineseName = (selectProduct) => {
         screen: "顯示器",
         hub: "擴充塢",
     };
-
     return nameMap[selectProduct] || "未知產品";
 };
 
-const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
-    let selectCards = document.querySelectorAll(".select-card");
-    selectCards.forEach((card) => {
-        let selectCardImg = card.querySelector(".select-card-img img");
-        selectCardImg.addEventListener("click", function () {
-            let target_product = productData[selectProduct].find(
-                (product) => product.name === selectCardImg.alt
-            );
-            // console.log(
-            //     productData[selectProduct],
-            //     selectProduct,
-            //     selectCardImg,
-            //     selectCardImg.alt,
-            //     target_product
-            // );
-            html = "";
-            html += `<div
-                            class="main-content"
-                            style="display: flex; flex-direction: column;"
-                        >
-                            <div class="bar">
-                                <h3>產品專區</h3>
-                                <nav class="breadcrumb">
-                                    <ul>
-                                        <li>
-                                            <a href="../index.html">首頁</a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="javascript:void(0);"
-                                                onclick="changePage('product','product',null)"
-                                                >產品專區</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" onclick="changePage('selectProduct', '${selectProduct}',null)">${chineseName}</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="individual-product">
-                                <div class="individual-product-img">
-                                    <img src="${target_product.src}" alt="${target_product.name}" />
-                                </div>
-                                <div class="individual-product-content">
-                                    <div class="individual-product-content-title">
-                                        ${target_product.name}
-                                    </div>
-                                    <div class="individual-product-content-text">
-                                        <div class="description">
-                                            ${target_product.description}
-                                        </div>
-                                        <div class="minus_and_plus-and-price">
-                                            <div class="minus_and_plus">
-                                                <div class="minus">-</div>
-                                                <div class="amount">1</div>
-                                                <div class="plus">+</div>
-                                            </div>
-                                            <div class="price">${target_product.price}</div>
-                                        </div>
-                                    </div>
-                                    <button class="add_to_cart">加入購物車</button>
-                                </div>
-                            </div>
-                        </div>`;
-            switchPageArea.innerHTML = html;
-            html = "";
-        });
-    });
-};
-
+// 直接在HTML內植入onclick
 const theProductPage = () => {
     html = `<div class="main-content">
                     <div class="bar">
@@ -510,6 +439,84 @@ const product_to_selectProduct = (selectProduct, chineseName) => {
     html += `</div>
                 </div>
                 `;
+    window.scrollTo(0, 0);
+};
+
+// 增加點擊"選擇產品"的頁面跳轉到"個別產品"的頁面的addeventListener
+const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
+    let selectCards = document.querySelectorAll(".select-card");
+    selectCards.forEach((card) => {
+        let selectCardImg = card.querySelector(".select-card-img img");
+        selectCardImg.addEventListener("click", function () {
+            let target_product = productData[selectProduct].find(
+                (product) => product.name === selectCardImg.alt
+            );
+            // console.log(
+            //     productData[selectProduct],
+            //     selectProduct,
+            //     selectCardImg,
+            //     selectCardImg.alt,
+            //     target_product
+            // );
+            html = "";
+            html += `<div
+                            class="main-content"
+                            style="display: flex; flex-direction: column;"
+                        >
+                            <div class="bar">
+                                <h3>產品專區</h3>
+                                <nav class="breadcrumb">
+                                    <ul>
+                                        <li>
+                                            <a href="../index.html">首頁</a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="javascript:void(0);"
+                                                onclick="changePage('product','product',null)"
+                                                >產品專區</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changePage('selectProduct', '${selectProduct}',null)">${chineseName}</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="individual-product">
+                                <div class="individual-product-img">
+                                    <img src="${target_product.src}" alt="${target_product.name}" />
+                                </div>
+                                <div class="individual-product-content">
+                                    <div class="individual-product-content-title">
+                                        ${target_product.name}
+                                    </div>
+                                    <div class="individual-product-content-text">
+                                        <div class="description">
+                                            ${target_product.description}
+                                        </div>
+                                        <div class="minus_and_plus-and-price">
+                                            <div class="minus_and_plus">
+                                                <div class="minus">-</div>
+                                                <div class="amount">1</div>
+                                                <div class="plus">+</div>
+                                            </div>
+                                            <div class="price">${target_product.price}</div>
+                                        </div>
+                                    </div>
+                                    <button class="add_to_cart">加入購物車</button>
+                                </div>
+                            </div>
+                        </div>`;
+
+            switchPageArea.innerHTML = html;
+            html = "";
+            window.scrollTo(0, 0);
+            // setTimeout(() => {
+            //     window.scrollTo(0);
+            // }, 0);
+        });
+    });
 };
 
 const changePage = (targetPage, selectProduct, targetProduct) => {
@@ -525,7 +532,19 @@ const changePage = (targetPage, selectProduct, targetProduct) => {
         chineseName = findChineseName(selectProduct);
         product_to_selectProduct(selectProduct, chineseName);
         switchPageArea.innerHTML = html;
+        // 增加點擊"選擇產品"的頁面跳轉到"個別產品"的頁面的監聽程式碼
         selectProduct_to_targetProduct(selectProduct, chineseName);
     }
     html = "";
 };
+
+// 首頁點擊card後跳轉到對應的產品頁
+let gotoPage = sessionStorage.getItem("gotoPage") || "";
+if (gotoPage) {
+    changePage("selectProduct", gotoPage, null);
+    // 清除sessionStorage
+    sessionStorage.removeItem("gotoPage");
+} else {
+    // 需要測試時，把html內要測試的區塊改為display: block，然後把下面這行註解
+    changePage(gotoPage, "product", null);
+}

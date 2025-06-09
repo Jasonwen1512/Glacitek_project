@@ -114,7 +114,7 @@ select {
     position: relative;
 }
 .main-footer {
-    /* top: 59.59px; */
+    top: 50px;
 }
 .main-header-container {
     background-color: var(--header-background-color);

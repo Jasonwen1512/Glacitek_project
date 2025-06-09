@@ -280,7 +280,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    pointer-events: auto;
+    pointer-events: none;
 }
 .product-button-left svg,
 .product-button-right svg {
@@ -302,6 +302,7 @@ h2 {
 }
 .product-button-left,
 .product-button-right {
+    pointer-events: auto;
     transition: 0.2s;
 }
 .news-botton .btn-ok,
@@ -755,7 +756,7 @@ a span.op1 {
         /* display: none; */
     }
     .tip-triangle-display {
-        transition: 0.4s 1.4s opacity;
+        transition: 0.5s 1.4s opacity;
     }
     .tip-text {
         font-size: 1.2rem;

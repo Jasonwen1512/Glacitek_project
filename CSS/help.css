@@ -135,10 +135,13 @@ h3::after {
     text-align: center;
     white-space: nowrap;
 }
-.help-nav-bar-item:hover {
-    background-color: #004a7c;
-    color: #fff;
-    cursor: pointer;
+
+@media (hover: hover) and (pointer: fine) {
+    .help-nav-bar-item:hover {
+        background-color: #004a7c;
+        color: #fff;
+        cursor: pointer;
+    }
 }
 @media screen and (max-width: 1920px) {
 }

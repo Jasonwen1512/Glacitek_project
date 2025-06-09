@@ -103,6 +103,20 @@ productButtonRight?.removeEventListener("click", productHandleRightClick);
 productButtonRight?.addEventListener("click", productHandleRightClick);
 // ↑產品區塊
 
+// ↓為每張產品卡片加上事件
+let exhibitAreaCard = exhibitArea.querySelectorAll(".card");
+// console.log(exhibitAreaCard);
+exhibitAreaCard.forEach((card) => {
+    card.addEventListener("click", function (e) {
+        let productName = this.querySelector(".card-img img").alt;
+        // console.log(productName);
+        sessionStorage.setItem("gotoPage", productName);
+        window.location.href = "../HTML/product.html";
+    });
+});
+
+// ↑為每張產品卡片加上事件，用於跳轉
+
 // ↓新聞區塊
 let newsButtonLeft = document.querySelector(".news-button-left");
 let newsButtonRight = document.querySelector(".news-button-right");
@@ -238,6 +252,7 @@ window.addEventListener("beforeunload", () => {
 });
 // ↑使用者分享區塊
 
+// ↓滑動螢幕讓header、垂直導覽列、back-to-top按鈕顯現
 let sectionNavTipArea = document.querySelectorAll(".section-nav .tip-area");
 let sectionNavSpan = document.querySelectorAll(".section-nav span");
 
@@ -318,6 +333,7 @@ const pageScroll = () => {
 // 850 1600 2500
 window.removeEventListener("scroll", pageScroll);
 window.addEventListener("scroll", pageScroll);
+// ↑滑動螢幕讓header、垂直導覽列、back-to-top按鈕顯現
 
 let sloganContent = document.querySelector(".slogan-content");
 let tipTriangle = document.querySelector(".tip-triangle");

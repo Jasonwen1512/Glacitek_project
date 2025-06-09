@@ -133,6 +133,8 @@ h3::after {
     top: 15%;
     text-align: start;
 }
+@media (hover: hover) and (pointer: fine) {
+}
 @media screen and (max-width: 1920px) {
 }
 @media screen and (max-width: 1600px) {

@@ -296,9 +296,13 @@ h3 {
     font-size: 1.5rem;
     cursor: pointer;
 }
-.order-submit:hover {
-    background-color: #00446f;
+
+@media (hover: hover) and (pointer: fine) {
+    .order-submit:hover {
+        background-color: #00446f;
+    }
 }
+
 @media screen and (max-width: 1920px) {
 }
 @media screen and (max-width: 1800px) {

@@ -85,7 +85,7 @@
             <nav class="menu">
                 <div>
                     <form action="">
-                        <button>
+                        <button type="button">
                             <img
                                 class="search"
                                 src="../image/search.svg"
@@ -268,8 +268,9 @@
                 </svg>
             </div>
             <div class="switch-page-area">
-                <div class="main-content" style="display: block">
-                    <div class="bar">
+                <!-- ↓預設全部隱藏，全交由JS控制 -->
+                <div class="main-content">
+                    <div class="bar" style="display: none">
                         <h3>產品專區</h3>
                         <nav class="breadcrumb">
                             <ul>
@@ -286,7 +287,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="main-display">
+                    <div class="main-display" style="display: none">
                         <div
                             class="product-card"
                             onclick="changePage('selectProduct', 'keyboard',null)"
@@ -408,7 +409,7 @@
                         display: none;
                     "
                 >
-                    <div class="bar">
+                    <div class="bar" style="display: none">
                         <h3>產品專區</h3>
                         <nav class="breadcrumb">
                             <ul>
@@ -425,7 +426,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="individual-product">
+                    <div class="individual-product" style="display: none">
                         <div class="individual-product-img">
                             <img src="../image/product/keyboard/0.jpg" alt="" />
                         </div>
@@ -450,7 +451,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="main-content" style="display: none">
+                <div class="main-content" style="display: none">
                     <div class="bar">
                         <h3>產品專區</h3>
                         <nav class="breadcrumb">
@@ -486,7 +487,8 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <!-- ↑預設全部隱藏，全交由JS控制 -->
             </div>
         </main>
         <footer class="main-footer">

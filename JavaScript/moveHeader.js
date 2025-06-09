@@ -85,20 +85,17 @@ const moveHeader = () => {
 };
 // 控制右下角back-to-top出現，專屬於手機狀況的像素偵測點
 const backToTopDisplayPX = 250;
-let showBackToTop = false;
+let isBackToTopVisible = false;
 const moveHeaderForPhone = () => {
-    let scrollTop =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop;
-    if (scrollTop >= backToTopDisplayPX && !showBackToTop) {
-        showBackToTop = true;
+    let scrollTop = window.scrollY;
+    if (scrollTop >= backToTopDisplayPX && !isBackToTopVisible) {
+        isBackToTopVisible = true;
         backToTop.classList.add("back-to-top-phone-display");
-        console.log("手機版backToTop顯示");
-    } else if (scrollTop < backToTopDisplayPX && showBackToTop) {
-        showBackToTop = false;
+        // console.log("手機版backToTop顯示");
+    } else if (scrollTop < backToTopDisplayPX && isBackToTopVisible) {
+        isBackToTopVisible = false;
         backToTop.classList.remove("back-to-top-phone-display");
-        console.log("手機版backToTop關閉");
+        // console.log("手機版backToTop關閉");
     }
     // console.log(scrollTop);
 };
