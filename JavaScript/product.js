@@ -387,6 +387,7 @@ const theProductPage = () => {
                         </div>
                     </div>
                 </div>`;
+    switchPageArea.innerHTML = html;
 };
 
 const product_to_selectProduct = (selectProduct, chineseName) => {
@@ -426,9 +427,17 @@ const product_to_selectProduct = (selectProduct, chineseName) => {
                                     ${productData[selectProduct][i].price}
                                 </div>
                                 <div class="select-card-amount_button">
-                                    <button class="minus">-</button>
+                                    <button class="minus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
+                                            <path d="M0 1V0H13V1H0Z" fill="black"/>
+                                        </svg>
+                                    </button>
                                     <div class="amount">1</div>
-                                    <button class="plus">+</button>
+                                    <button class="plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                            <path d="M0 7V6H6V0H7V6H13V7H7V13H6V7H0Z" fill="black"/>
+                                        </svg>
+                                    </button>
                                 </div>
                                 <button class="select-card-add_to_cart">
                                     加入購物車
@@ -439,7 +448,10 @@ const product_to_selectProduct = (selectProduct, chineseName) => {
     html += `</div>
                 </div>
                 `;
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        behavior: "auto",
+    });
 };
 
 // 增加點擊"選擇產品"的頁面跳轉到"個別產品"的頁面的addeventListener
@@ -497,9 +509,17 @@ const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
                                         </div>
                                         <div class="minus_and_plus-and-price">
                                             <div class="minus_and_plus">
-                                                <div class="minus">-</div>
+                                                <div class="minus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
+                                                        <path d="M0 1V0H13V1H0Z" fill="black"/>
+                                                    </svg>
+                                                </div>
                                                 <div class="amount">1</div>
-                                                <div class="plus">+</div>
+                                                <div class="plus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                                        <path d="M0 7V6H6V0H7V6H13V7H7V13H6V7H0Z" fill="black"/>
+                                                    </svg>
+                                                </div>
                                             </div>
                                             <div class="price">${target_product.price}</div>
                                         </div>
@@ -511,10 +531,10 @@ const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
 
             switchPageArea.innerHTML = html;
             html = "";
-            window.scrollTo(0, 0);
-            // setTimeout(() => {
-            //     window.scrollTo(0);
-            // }, 0);
+            window.scrollTo({
+                top: 0,
+                behavior: "auto",
+            });
         });
     });
 };
@@ -526,7 +546,6 @@ const changePage = (targetPage, selectProduct, targetProduct) => {
     if (!targetPage || targetPage === "product") {
         console.log("Product page selected");
         theProductPage();
-        switchPageArea.innerHTML = html;
     } else if (targetPage === "selectProduct") {
         let chineseName = "";
         chineseName = findChineseName(selectProduct);
@@ -548,3 +567,4 @@ if (gotoPage) {
     // 需要測試時，把html內要測試的區塊改為display: block，然後把下面這行註解
     changePage(gotoPage, "product", null);
 }
+document.addEventListener("touchstart", () => {}, true);

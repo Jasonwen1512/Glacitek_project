@@ -437,6 +437,9 @@ body:has(#switch-hb:checked) {
     .main-content {
         min-height: calc(100vh - 14.5vw - 130px);
     }
+    .overlay {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1200px) {

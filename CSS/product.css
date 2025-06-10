@@ -161,6 +161,10 @@ h3::after {
     flex-direction: row;
     flex-wrap: wrap;
 }
+.product-card-img img:active,
+.select-card-img img:active {
+    opacity: 0.8;
+}
 .minus,
 .amount,
 .plus {
@@ -229,6 +233,8 @@ h3::after {
 }
 .minus_and_plus {
     display: flex;
+    /* justify-content: center; */
+    align-items: center;
 }
 .individual-product-content {
     width: 60%;
@@ -271,7 +277,6 @@ h3::after {
     height: 100%;
     font-size: 1.2vw;
     text-align: center;
-    line-height: 40px;
 }
 .price {
     font-size: 1.4583vw;
@@ -287,6 +292,14 @@ h3::after {
     border-radius: 6px;
     padding: 1.5% 0;
     cursor: pointer;
+}
+.minus,
+.plus {
+    /* -webkit-tap-highlight-color: transparent; */
+}
+.minus:active,
+.plus:active {
+    background-color: #e6e6e6;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -309,6 +322,10 @@ h3::after {
         color: #fff;
         background-color: rgba(0, 0, 0, 0.65);
     }
+    .minus:hover,
+    .plus:hover {
+        background-color: #e6e6e6;
+    }
 }
 @media screen and (max-width: 1920px) {
 }
@@ -327,6 +344,14 @@ h3::after {
     }
     .slelect_product {
         grid-template-columns: repeat(3, 1fr);
+    }
+    .minus_and_plus-and-price .minus,
+    .minus_and_plus-and-price .amount,
+    .minus_and_plus-and-price .plus {
+        height: 70%;
+    }
+
+    .minus_and_plus-and-price .amount {
     }
 }
 @media screen and (max-width: 1200px) {
@@ -384,8 +409,8 @@ h3::after {
         font-size: 0.75rem;
     }
     .minus_and_plus-and-price .minus_and_plus {
-        width: 60%;
-        height: auto;
+        width: 70%;
+        /* height: auto; */
     }
     .minus_and_plus-and-price .minus,
     .minus_and_plus-and-price .amount,
@@ -395,15 +420,15 @@ h3::after {
         line-height: 1.5;
     }
     .minus {
-        border-radius: 3px 0 0 3px;
+        border-radius: 4px 0 0 4px;
     }
     .plus {
-        border-radius: 0 3px 3px 0;
+        border-radius: 0 4px 4px 0;
     }
     .price {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
     .add_to_cart {
-        border-radius: 3px;
+        border-radius: 4px;
     }
 }

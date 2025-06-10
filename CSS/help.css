@@ -76,7 +76,11 @@ h3::after {
     align-items: center;
     margin: 3.125% auto;
 }
+.help-area-FAQ {
+    display: none;
+}
 .help-area > div {
+    width: 100%;
     margin-bottom: 5%;
 }
 .help-area-title {
@@ -98,6 +102,7 @@ h3::after {
     left: 0px;
 }
 .help-area-content-card {
+    width: 95%;
     position: relative;
     left: 5%;
     margin-top: 2.5%;
@@ -124,6 +129,10 @@ h3::after {
     right: 5.5%;
     transform: translateX(0);
 }
+.help-nav-bar-FAQ {
+    font-size: 1.25rem;
+    text-align: center;
+}
 .help-nav-bar-item {
     padding: 5% 10%;
     margin: 5% 0;
@@ -146,6 +155,9 @@ h3::after {
 @media screen and (max-width: 1920px) {
 }
 @media screen and (max-width: 1440px) {
+    .help-nav-bar-FAQ {
+        font-size: 0.9rem;
+    }
     .help-nav-bar-item {
         font-size: 0.9rem;
     }
@@ -156,4 +168,92 @@ h3::after {
     }
 }
 @media screen and (max-width: 1024px) {
+    .help-nav-bar {
+        display: none;
+    }
+    .main-content {
+        width: 75%;
+    }
+    .main-display {
+        margin-top: 30px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bar {
+        gap: 6%;
+    }
+    .bar > h3 {
+        font-size: 3vh;
+    }
+    .breadcrumb ul li {
+        font-size: 1.5vh;
+    }
+    .help-area {
+        width: 100%;
+        margin: 30px 0 0 0;
+    }
+    /* 三個常見問題手風琴 */
+    #buy_and_pay .help-area-content {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+    }
+    #delivery_and_fare .help-area-content {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+    }
+    #returns_and_warranty .help-area-content {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .help-area > div {
+        margin: 0;
+    }
+    .help-area-content,
+    .help-area-content-card {
+        min-height: 0;
+    }
+    .help-area-content *,
+    .help-area-content-card-A * {
+        overflow: hidden;
+    }
+    /* 常見問題手風琴點開，裡面QA的巢狀手風琴 */
+    .help-area-content-card-A {
+        display: grid;
+        grid-template-rows: 1fr;
+    }
+    .help-area-content,
+    .help-area-content-card-A {
+        transition: 0.3s;
+    }
+    .help-area-FAQ {
+        width: 100%;
+        text-align: center;
+        display: block;
+        font-size: 1.3rem;
+        color: #004a7c;
+        margin: 30px auto 11px;
+        position: relative;
+    }
+    .help-area-FAQ::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: #004a7c;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+    }
+    .help-area-title {
+        font-size: 1.2rem;
+    }
+    .help-area-content-card {
+        font-size: 1rem;
+    }
+    .help-area-content::before {
+        display: none;
+    }
+}
+@media screen and (max-width: 425px) {
+    .help-area-content-card {
+        font-size: 0.95rem;
+    }
 }
