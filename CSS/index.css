@@ -227,6 +227,7 @@ h2 {
     gap: 10px;
     transition: 0.3s;
     will-change: transform;
+    transform: translateX(calc(-1 * ((100% - 20px) / 3) - 10px));
 }
 .exhibit-area .card {
     width: calc((100% - 20px) / 3);
@@ -289,12 +290,12 @@ h2 {
 .product-button-left {
     position: relative;
     right: 10%;
-    cursor: default;
+    cursor: pointer;
 }
 /* 左側按鈕一開始灰色 */
-.product-button-left path {
+/* .product-button-left path {
     fill: #b8bcbe;
-}
+} */
 .product-button-right {
     position: relative;
     left: 10%;
@@ -696,7 +697,8 @@ a span.op1 {
     .card-img img:hover {
         transform: scale(1.03);
     }
-    .product-button-right:hover {
+    .product-button-right:hover,
+    .product-button-left:hover {
         transform: scale(1.3);
     }
     .news-botton .btn-ok:hover,

@@ -18,13 +18,18 @@ let productTranslateX = 0; // 用來記錄 translateX 的位移量（距離）
 let productMovefrequency = 0; // 移動的格數
 let productAmount = 8; // 目前有8個產品分類（card）
 
+let clickable = true;
+
 const updateProductTransform = (productTranslateX) => {
     exhibitArea.style.transform = `translateX(${productTranslateX}px)`;
 };
 const productHandleLeftClick = () => {
-    if (exhibitArea && card) {
+    if (clickable) {
+        clickable = false;
         // 產品左側按鈕可按
         const isMobile = window.innerWidth <= 1024;
+        // 如果用的是offsetWidth，回傳的是整數會有誤差
+        // 用的是getBoundingClientRect().width回傳的則是浮點數
         let moveWidth = card.getBoundingClientRect().width;
         let lastChild = exhibitArea.lastElementChild;
         if (isMobile <= 1024) {
@@ -33,24 +38,27 @@ const productHandleLeftClick = () => {
             let matrix = getComputedStyle(exhibitArea).transform;
             // 抓取translateX（初始為負數）and 滑動一次會越過一個gap，所以+10
             let originalTranslateX = new DOMMatrixReadOnly(matrix).m41 + 10;
-
-            // updateProductTransform(originalTranslateX);
-            exhibitArea.insertBefore(lastChild, exhibitArea.firstElementChild);
-            // 先關閉動畫，把卡片歸位
+            // 先取消動畫，把卡片歸位（做一次反向滑動的意思）
             exhibitArea.style.transition = "none";
-            updateProductTransform(originalTranslateX);
+            // originalTranslateX -= moveWidth;
+            updateProductTransform(originalTranslateX - moveWidth);
+            // 再插入節點
+            exhibitArea.insertBefore(lastChild, exhibitArea.firstElementChild);
             // 然後在極短時間內恢復動畫，移動卡片
-            originalTranslateX += moveWidth;
             setTimeout(() => {
                 exhibitArea.style.transition = "transform 0.3s";
-                updateProductTransform(originalTranslateX);
+                updateProductTransform(originalTranslateX - 10);
             }, 20);
         } else {
-            // 如果用的是offsetWidth，回傳的是整數會有誤差
-            // 用的是getBoundingClientRect().width回傳的則是浮點數
             moveWidth += 10;
-            productTranslateX += moveWidth;
-            updateProductTransform(productTranslateX);
+            exhibitArea.style.transition = "none";
+            updateProductTransform(originalTranslateX - moveWidth);
+            exhibitArea.insertBefore(lastChild, exhibitArea.firstElementChild);
+            // productTranslateX += moveWidth;
+            setTimeout(() => {
+                exhibitArea.style.transition = "transform 0.3s";
+                updateProductTransform(productTranslateX);
+            }, 20);
         }
 
         productButtonLeft.classList.remove("btn-ok");
@@ -66,10 +74,14 @@ const productHandleLeftClick = () => {
         //     productButtonLeft.classList.add("btn-disabled");
         // }
         // productMovefrequency--;
+        setTimeout(() => {
+            clickable = true;
+        }, 400);
     }
 };
 const productHandleRightClick = () => {
-    if (exhibitArea && card) {
+    if (clickable) {
+        clickable = false;
         // 產品右側按鈕可按
         const isMobile = window.innerWidth <= 1024;
         let moveWidth = card.getBoundingClientRect().width;
@@ -82,19 +94,25 @@ const productHandleRightClick = () => {
             let originalTranslateX = new DOMMatrixReadOnly(matrix).m41 - 10;
             // 先取消動畫
             exhibitArea.style.transition = "none";
-            originalTranslateX -= moveWidth;
-            updateProductTransform(originalTranslateX);
+            // originalTranslateX -= moveWidth;
+            updateProductTransform(originalTranslateX + moveWidth);
             // 再插入節點
             exhibitArea.insertBefore(firstChild, null);
             // 然後在極短時間內加回動畫;
             setTimeout(() => {
                 exhibitArea.style.transition = "transform 0.3s";
-                // updateProductTransform(originalTranslateX);
+                updateProductTransform(originalTranslateX + 10);
             }, 20);
         } else {
             moveWidth += 10;
-            productTranslateX -= moveWidth;
-            updateProductTransform(productTranslateX);
+            exhibitArea.style.transition = "none";
+            updateProductTransform(originalTranslateX - moveWidth);
+            exhibitArea.insertBefore(firstChild, null);
+            // productTranslateX -= moveWidth;
+            setTimeout(() => {
+                exhibitArea.style.transition = "transform 0.3s";
+                updateProductTransform(productTranslateX);
+            }, 20);
         }
 
         productButtonLeft.classList.remove("btn-ok");
@@ -111,6 +129,9 @@ const productHandleRightClick = () => {
         //     productButtonRight.classList.add("btn-disabled");
         // }
         // productMovefrequency++;
+        setTimeout(() => {
+            clickable = true;
+        }, 400);
     }
 };
 
@@ -120,24 +141,22 @@ const judgeSlideDirection_start = (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
 };
+const SLIDE_THRESHOLD = 10;
 const judgeSlideDirection_end = (e) => {
     const endX = e.changedTouches[0].clientX;
     const endY = e.changedTouches[0].clientY;
     const diffX = endX - startX;
     const diffY = endY - startY;
-    if (Math.abs(diffX) > Math.abs(diffY)) {
+    if (
+        Math.abs(diffX) > Math.abs(diffY) &&
+        Math.abs(diffX) > SLIDE_THRESHOLD
+    ) {
         if (diffX > 0) {
             // console.log("向右滑");
             productHandleLeftClick();
         } else {
             // console.log("向左滑");
             productHandleRightClick();
-        }
-    } else {
-        if (diffY > 0) {
-            // console.log("向下滑");
-        } else {
-            // console.log("向上滑");
         }
     }
 };
@@ -146,6 +165,19 @@ exhibitArea?.removeEventListener("touchstart", judgeSlideDirection_start);
 exhibitArea?.addEventListener("touchstart", judgeSlideDirection_start);
 exhibitArea?.removeEventListener("touchend", judgeSlideDirection_end);
 exhibitArea?.addEventListener("touchend", judgeSlideDirection_end);
+exhibitArea?.addEventListener(
+    "touchmove",
+    (e) => {
+        const deltaX = e.touches[0].clientX - startX;
+        const deltaY = e.touches[0].clientY - startY;
+
+        // 如果主要是橫向滑動，阻止預設滾動
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            e.preventDefault();
+        }
+    },
+    { passive: false }
+);
 
 // ?. 代表先判斷前者有沒有存在，存在則繼續，不存在則直接跳過
 // 下面程式碼相當於
