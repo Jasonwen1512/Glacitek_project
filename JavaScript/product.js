@@ -275,7 +275,7 @@ const theProductPage = () => {
                     <div class="main-display">
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'keyboard',null)"
+                            data-product-name='keyboard'
                         >
                             <div class="product-card-img">
                                 <img
@@ -289,7 +289,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'mouse',null)"
+                            data-product-name='mouse'
                         >
                             <div class="product-card-img">
                                 <img
@@ -303,7 +303,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'earphone',null)"
+                            data-product-name='earphone'
                         >
                             <div class="product-card-img">
                                 <img
@@ -317,7 +317,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'speaker',null)"
+                            data-product-name='speaker'
                         >
                             <div class="product-card-img">
                                 <img
@@ -331,7 +331,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'microphone',null)"
+                            data-product-name='microphone'
                         >
                             <div class="product-card-img">
                                 <img
@@ -345,7 +345,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'mousepad',null)"
+                            data-product-name='mousepad'
                         >
                             <div class="product-card-img">
                                 <img
@@ -359,7 +359,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'screen',null)"
+                            data-product-name='screen'
                         >
                             <div class="product-card-img">
                                 <img
@@ -373,7 +373,7 @@ const theProductPage = () => {
                         </div>
                         <div
                             class="product-card"
-                            onclick="changePage('selectProduct', 'hub',null)"
+                            data-product-name='hub'
                         >
                             <div class="product-card-img">
                                 <img
@@ -388,6 +388,15 @@ const theProductPage = () => {
                     </div>
                 </div>`;
     switchPageArea.innerHTML = html;
+    const appendProductPageClick = (e) => {
+        // console.log(e.currentTarget.dataset.productName);
+        changePage("selectProduct", e.currentTarget.dataset.productName, null);
+    };
+    let productCard = document.querySelectorAll(".product-card");
+    productCard.forEach((item) => {
+        item.removeEventListener("click", appendProductPageClick);
+        item.addEventListener("click", appendProductPageClick);
+    });
 };
 
 const product_to_selectProduct = (selectProduct, chineseName) => {
@@ -509,17 +518,17 @@ const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
                                         </div>
                                         <div class="minus_and_plus-and-price">
                                             <div class="minus_and_plus">
-                                                <div class="minus">
+                                                <button class="minus">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
                                                         <path d="M0 1V0H13V1H0Z" fill="black"/>
                                                     </svg>
-                                                </div>
+                                                </button>
                                                 <div class="amount">1</div>
-                                                <div class="plus">
+                                                <button class="plus">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                                                         <path d="M0 7V6H6V0H7V6H13V7H7V13H6V7H0Z" fill="black"/>
                                                     </svg>
-                                                </div>
+                                                </button>
                                             </div>
                                             <div class="price">${target_product.price}</div>
                                         </div>

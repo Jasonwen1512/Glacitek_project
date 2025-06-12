@@ -149,10 +149,6 @@ h3 {
     border-radius: 0 6px 6px 0;
     cursor: pointer;
 }
-.minus:hover,
-.plus:hover {
-    background-color: #e6e6e6;
-}
 .total-price {
     width: 100%;
     justify-content: flex-end;
@@ -177,6 +173,7 @@ h3 {
 .order-area {
     position: relative;
     margin-top: 10%;
+    padding: 3% 0;
 }
 .order-area::before {
     content: "";
@@ -288,6 +285,10 @@ h3 {
     top: -50%;
     left: 0;
 }
+.order-area-submit {
+    width: 100%;
+    padding: 1.5vw 0 0 0;
+}
 .order-submit {
     width: 80%;
     margin: 0 auto;
@@ -295,8 +296,8 @@ h3 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 1.302vw;
+    /* position: relative;
+    top: 1.302vw; */
     color: #e8f1f5;
     background-color: #005691;
     border-radius: 6px;
@@ -304,10 +305,16 @@ h3 {
     font-size: 1.5rem;
     cursor: pointer;
 }
-
+.order-submit:active {
+    background-color: #00446f;
+}
 @media (hover: hover) and (pointer: fine) {
     .order-submit:hover {
         background-color: #00446f;
+    }
+    .minus:hover,
+    .plus:hover {
+        background-color: #e6e6e6;
     }
 }
 
@@ -350,7 +357,6 @@ h3 {
     .freight {
         font-size: 1.2rem;
     }
-
     .order-submit {
         font-size: 1.2rem;
     }
@@ -454,7 +460,7 @@ h3 {
         grid-template-rows: 40% 1fr;
     }
     .product-card-title {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     .product-card-title::after {
         top: 1.5rem;
@@ -532,20 +538,33 @@ h3 {
     .price {
         font-size: 0.7rem;
     }
+    .order-area {
+        /* border: 1px solid #ddd; */
+    }
     .order-area::before {
         background-color: #004a7c;
     }
     .order-title {
         font-size: 1.5rem;
         position: relative;
-        top: 15px;
+        /* top: 15px; */
+        /* border-width: 0 0 1px 0;
+        border-color: #dddddd;
+        border-style: solid; */
+        padding-bottom: 5%;
     }
     .order-content {
         width: 100%;
         flex-direction: column;
-        margin-top: 12%;
-        border: 1px solid #ddd;
-        padding: 5% 10%;
+        margin: 0;
+        border-width: 1px 1px 0 1px;
+        border-color: #dddddd;
+        border-style: solid;
+        padding: 8% 10% 5% 10%;
+    }
+    .order-content,
+    .order-area-submit {
+        background-color: rgba(255, 255, 255, 0.7);
     }
     .buyer-info,
     .order-summary {
@@ -554,10 +573,32 @@ h3 {
     .buyer-info-title {
         display: none;
     }
+    .buyer-info-content input,
+    .buyer-info-content textarea {
+        border-radius: 0.3rem;
+        font-size: 0.85rem;
+    }
+    .order-summary-title {
+        margin: 6% 0 10% 0;
+    }
+    .order-summary-content {
+        width: 100%;
+    }
+    .order-area-submit {
+        padding-bottom: 5vw;
+        border-width: 0 1px 1px 1px;
+        border-color: #dddddd;
+        border-style: solid;
+    }
 }
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 550px) {
+    .product-card-info {
+        grid-template-columns: 1fr 35%;
+    }
+}
+@media screen and (max-width: 470px) {
     .product-card-title {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
     .product-card-info {
         grid-template-columns: 1fr 45%;

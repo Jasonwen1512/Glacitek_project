@@ -7,85 +7,145 @@ let productButtonLeftPath = document.querySelector(".product-button-left path");
 let productButtonRightPath = document.querySelector(
     ".product-button-right path"
 );
+let productItem = document.querySelector(".product-item");
+
 // 欲移動的產品區塊
 let exhibitArea = document.querySelector(".exhibit-area");
+
 let card = document.querySelector(".card");
 
 let productTranslateX = 0; // 用來記錄 translateX 的位移量（距離）
 let productMovefrequency = 0; // 移動的格數
 let productAmount = 8; // 目前有8個產品分類（card）
 
-const updateProductTransform = () => {
+const updateProductTransform = (productTranslateX) => {
     exhibitArea.style.transform = `translateX(${productTranslateX}px)`;
 };
 const productHandleLeftClick = () => {
     if (exhibitArea && card) {
         // 產品左側按鈕可按
-        if (productMovefrequency > 0) {
-            // console.log(1);
+        const isMobile = window.innerWidth <= 1024;
+        let moveWidth = card.getBoundingClientRect().width;
+        let lastChild = exhibitArea.lastElementChild;
+        if (isMobile <= 1024) {
+            // console.log("往右滑");
+            // 此時matrix是矩陣
+            let matrix = getComputedStyle(exhibitArea).transform;
+            // 抓取translateX（初始為負數）and 滑動一次會越過一個gap，所以+10
+            let originalTranslateX = new DOMMatrixReadOnly(matrix).m41 + 10;
+
+            // updateProductTransform(originalTranslateX);
+            exhibitArea.insertBefore(lastChild, exhibitArea.firstElementChild);
+            // 先關閉動畫，把卡片歸位
+            exhibitArea.style.transition = "none";
+            updateProductTransform(originalTranslateX);
+            // 然後在極短時間內恢復動畫，移動卡片
+            originalTranslateX += moveWidth;
+            setTimeout(() => {
+                exhibitArea.style.transition = "transform 0.3s";
+                updateProductTransform(originalTranslateX);
+            }, 20);
+        } else {
             // 如果用的是offsetWidth，回傳的是整數會有誤差
             // 用的是getBoundingClientRect().width回傳的則是浮點數
-            let moveWidth = card.getBoundingClientRect().width + 10;
+            moveWidth += 10;
             productTranslateX += moveWidth;
-            updateProductTransform();
-            // exhibitArea.style.left = `${productCurrentLeft}px`;
-
-            // productButtonLeftPath.style.fill = "#3388BB";
-            // productButtonRightPath.style.fill = "#3388BB";
-            // productButtonLeft.style.cursor = "pointer";
-            // productButtonRight.style.cursor = "pointer";
-
-            productButtonLeft.classList.remove("btn-ok");
-            productButtonRight.classList.remove("btn-ok");
-            productButtonLeft.classList.add("btn-ok");
-            productButtonRight.classList.add("btn-ok");
-            productButtonLeft.classList.remove("btn-disabled");
-            productButtonRight.classList.remove("btn-disabled");
-            // 左邊按鈕不能再按了
-            if (productMovefrequency === 1) {
-                // productButtonLeftPath.style.fill = "#b8bcbe";
-                // productButtonLeft.style.cursor = "default";
-                productButtonLeft.classList.remove("btn-ok");
-                productButtonLeft.classList.remove("btn-disabled");
-                productButtonLeft.classList.add("btn-disabled");
-            }
-            productMovefrequency--;
+            updateProductTransform(productTranslateX);
         }
+
+        productButtonLeft.classList.remove("btn-ok");
+        productButtonRight.classList.remove("btn-ok");
+        productButtonLeft.classList.add("btn-ok");
+        productButtonRight.classList.add("btn-ok");
+        productButtonLeft.classList.remove("btn-disabled");
+        productButtonRight.classList.remove("btn-disabled");
+        // 左邊按鈕不能再按了
+        // if (productMovefrequency === 1) {
+        //     productButtonLeft.classList.remove("btn-ok");
+        //     productButtonLeft.classList.remove("btn-disabled");
+        //     productButtonLeft.classList.add("btn-disabled");
+        // }
+        // productMovefrequency--;
     }
 };
 const productHandleRightClick = () => {
     if (exhibitArea && card) {
         // 產品右側按鈕可按
-        if (productMovefrequency < productAmount - 3) {
-            let moveWidth = card.getBoundingClientRect().width + 10;
+        const isMobile = window.innerWidth <= 1024;
+        let moveWidth = card.getBoundingClientRect().width;
+        let firstChild = exhibitArea.firstElementChild;
+        if (isMobile <= 1024) {
+            // console.log("往左滑");
+            // 此時matrix是矩陣
+            let matrix = getComputedStyle(exhibitArea).transform;
+            // 抓取translateX（初始為負數）and 滑動一次會越過一個gap，所以+10
+            let originalTranslateX = new DOMMatrixReadOnly(matrix).m41 - 10;
+            // 先取消動畫
+            exhibitArea.style.transition = "none";
+            originalTranslateX -= moveWidth;
+            updateProductTransform(originalTranslateX);
+            // 再插入節點
+            exhibitArea.insertBefore(firstChild, null);
+            // 然後在極短時間內加回動畫;
+            setTimeout(() => {
+                exhibitArea.style.transition = "transform 0.3s";
+                // updateProductTransform(originalTranslateX);
+            }, 20);
+        } else {
+            moveWidth += 10;
             productTranslateX -= moveWidth;
-            updateProductTransform();
-            // exhibitArea.style.left = `${productCurrentLeft}px`;
+            updateProductTransform(productTranslateX);
+        }
 
-            // productButtonLeftPath.style.fill = "#3388BB";
-            // productButtonRightPath.style.fill = "#3388BB";
-            // productButtonLeft.style.cursor = "pointer";
-            // productButtonRight.style.cursor = "pointer";
+        productButtonLeft.classList.remove("btn-ok");
+        productButtonRight.classList.remove("btn-ok");
+        productButtonLeft.classList.add("btn-ok");
+        productButtonRight.classList.add("btn-ok");
+        productButtonLeft.classList.remove("btn-disabled");
+        productButtonRight.classList.remove("btn-disabled");
 
-            productButtonLeft.classList.remove("btn-ok");
-            productButtonRight.classList.remove("btn-ok");
-            productButtonLeft.classList.add("btn-ok");
-            productButtonRight.classList.add("btn-ok");
-            productButtonLeft.classList.remove("btn-disabled");
-            productButtonRight.classList.remove("btn-disabled");
+        // 右邊按鈕不能再按了
+        // if (productMovefrequency === productAmount - 4) {
+        //     productButtonRight.classList.remove("btn-ok");
+        //     productButtonRight.classList.remove("btn-disabled");
+        //     productButtonRight.classList.add("btn-disabled");
+        // }
+        // productMovefrequency++;
+    }
+};
 
-            // 右邊按鈕不能再按了
-            if (productMovefrequency === productAmount - 4) {
-                // productButtonRightPath.style.fill = "#b8bcbe";
-                // productButtonRight.style.cursor = "default";
-                productButtonRight.classList.remove("btn-ok");
-                productButtonRight.classList.remove("btn-disabled");
-                productButtonRight.classList.add("btn-disabled");
-            }
-            productMovefrequency++;
+let startX = 0;
+let startY = 0;
+const judgeSlideDirection_start = (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+};
+const judgeSlideDirection_end = (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const diffX = endX - startX;
+    const diffY = endY - startY;
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+            // console.log("向右滑");
+            productHandleLeftClick();
+        } else {
+            // console.log("向左滑");
+            productHandleRightClick();
+        }
+    } else {
+        if (diffY > 0) {
+            // console.log("向下滑");
+        } else {
+            // console.log("向上滑");
         }
     }
 };
+
+exhibitArea?.removeEventListener("touchstart", judgeSlideDirection_start);
+exhibitArea?.addEventListener("touchstart", judgeSlideDirection_start);
+exhibitArea?.removeEventListener("touchend", judgeSlideDirection_end);
+exhibitArea?.addEventListener("touchend", judgeSlideDirection_end);
 
 // ?. 代表先判斷前者有沒有存在，存在則繼續，不存在則直接跳過
 // 下面程式碼相當於
@@ -203,6 +263,7 @@ newsButtonLeft?.removeEventListener("click", newstHandleLeftClick);
 newsButtonLeft?.addEventListener("click", newstHandleLeftClick);
 newsButtonRight?.removeEventListener("click", newstHandleRightClick);
 newsButtonRight?.addEventListener("click", newstHandleRightClick);
+
 // ↑新聞區塊
 
 // ↓使用者分享區塊
@@ -342,3 +403,6 @@ window.onload = () => {
     sloganContent.classList.add("slogan-content-display");
     tipTriangle.classList.add("tip-triangle-display");
 };
+// window.addEventListener("click", (e) => {
+//     console.log(e.target);
+// });

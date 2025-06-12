@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="../CSS/header_and_footer_cart.css" />
         <link rel="stylesheet" href="../CSS/cart.css" />
         <script src="../JavaScript/cart.js" defer></script>
+        <script src="../JavaScript/header_and_footer.js" defer></script>
 
         <title>Glacitek</title>
     </head>
@@ -386,13 +387,21 @@
                             <div class="buyer-info">
                                 <div class="buyer-info-title">購買人資訊</div>
                                 <div class="buyer-info-content">
-                                    <label for="name">姓名</label><br />
+                                    <label for="name" autocomplete="name"
+                                        >姓名</label
+                                    ><br />
                                     <input type="text" id="name" /><br />
-                                    <label for="phone">聯絡電話</label><br />
+                                    <label for="phone" autocomplete="phone"
+                                        >聯絡電話</label
+                                    ><br />
                                     <input type="tel" id="phone" /><br />
-                                    <label for="email">電子信箱</label><br />
+                                    <label for="email" autocomplete="email"
+                                        >電子信箱</label
+                                    ><br />
                                     <input type="email" id="email" /><br />
-                                    <label for="remark">備註</label><br />
+                                    <label for="remark" autocomplete="remark"
+                                        >備註</label
+                                    ><br />
                                     <textarea type="text" id="remark"></textarea
                                     ><br />
                                 </div>
@@ -423,9 +432,11 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="order-submit">
-                            <span>結帳</span>
-                        </button>
+                        <div class="order-area-submit">
+                            <button class="order-submit">
+                                <span>結帳</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
