@@ -149,6 +149,10 @@ h3 {
     border-radius: 0 6px 6px 0;
     cursor: pointer;
 }
+.minus svg,
+.plus svg {
+    pointer-events: none;
+}
 .total-price {
     width: 100%;
     justify-content: flex-end;

@@ -577,7 +577,7 @@ if (gotoPage) {
     changePage(gotoPage, "product", null);
 }
 
-switchPageArea.addEventListener("click", function (e) {
+switchPageArea.addEventListener("click", (e) => {
     let e_target = e.target;
     // "數量增減"功能的實作
     if (

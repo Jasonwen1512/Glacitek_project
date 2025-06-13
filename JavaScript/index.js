@@ -76,7 +76,7 @@ const productHandleLeftClick = () => {
         // productMovefrequency--;
         setTimeout(() => {
             clickable = true;
-        }, 400);
+        }, 350);
     }
 };
 const productHandleRightClick = () => {
@@ -131,7 +131,7 @@ const productHandleRightClick = () => {
         // productMovefrequency++;
         setTimeout(() => {
             clickable = true;
-        }, 400);
+        }, 350);
     }
 };
 
@@ -152,16 +152,22 @@ const judgeSlideDirection_end = (e) => {
         Math.abs(diffX) > SLIDE_THRESHOLD
     ) {
         e.preventDefault();
-        console.log(e);
-
+        const isProductArea = e.target.closest("#product-area");
+        const isNewsArea = e.target.closest("#news-area");
         if (diffX > 0) {
             // console.log("向右滑");
-
-            productHandleLeftClick();
+            if (isProductArea) {
+                productHandleLeftClick();
+            } else if (isNewsArea) {
+                newstHandleLeftClick();
+            }
         } else {
             // console.log("向左滑");
-
-            productHandleRightClick();
+            if (isProductArea) {
+                productHandleRightClick();
+            } else if (isNewsArea) {
+                newstHandleRightClick();
+            }
         }
     }
 };
