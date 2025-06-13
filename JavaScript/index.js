@@ -141,7 +141,7 @@ const judgeSlideDirection_start = (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
 };
-const SLIDE_THRESHOLD = 10;
+const SLIDE_THRESHOLD = 20;
 const judgeSlideDirection_end = (e) => {
     const endX = e.changedTouches[0].clientX;
     const endY = e.changedTouches[0].clientY;
@@ -151,11 +151,16 @@ const judgeSlideDirection_end = (e) => {
         Math.abs(diffX) > Math.abs(diffY) &&
         Math.abs(diffX) > SLIDE_THRESHOLD
     ) {
+        e.preventDefault();
+        console.log(e);
+
         if (diffX > 0) {
             // console.log("向右滑");
+
             productHandleLeftClick();
         } else {
             // console.log("向左滑");
+
             productHandleRightClick();
         }
     }
@@ -165,14 +170,18 @@ exhibitArea?.removeEventListener("touchstart", judgeSlideDirection_start);
 exhibitArea?.addEventListener("touchstart", judgeSlideDirection_start);
 exhibitArea?.removeEventListener("touchend", judgeSlideDirection_end);
 exhibitArea?.addEventListener("touchend", judgeSlideDirection_end);
-exhibitArea?.addEventListener(
+
+productItem?.removeEventListener("touchstart", judgeSlideDirection_start);
+productItem?.addEventListener("touchstart", judgeSlideDirection_start);
+productItem?.removeEventListener("touchend", judgeSlideDirection_end);
+productItem?.addEventListener("touchend", judgeSlideDirection_end);
+productItem?.addEventListener(
     "touchmove",
     (e) => {
-        const deltaX = e.touches[0].clientX - startX;
-        const deltaY = e.touches[0].clientY - startY;
-
-        // 如果主要是橫向滑動，阻止預設滾動
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        // 阻止預設的上下滾動
+        if (Math.abs(dx) > Math.abs(dy)) {
             e.preventDefault();
         }
     },
@@ -295,6 +304,23 @@ newsButtonLeft?.removeEventListener("click", newstHandleLeftClick);
 newsButtonLeft?.addEventListener("click", newstHandleLeftClick);
 newsButtonRight?.removeEventListener("click", newstHandleRightClick);
 newsButtonRight?.addEventListener("click", newstHandleRightClick);
+
+newsItemW90?.removeEventListener("touchstart", judgeSlideDirection_start);
+newsItemW90?.addEventListener("touchstart", judgeSlideDirection_start);
+newsItemW90?.removeEventListener("touchend", judgeSlideDirection_end);
+newsItemW90?.addEventListener("touchend", judgeSlideDirection_end);
+newsItemW90?.addEventListener(
+    "touchmove",
+    (e) => {
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        // 阻止預設的上下滾動
+        if (Math.abs(dx) > Math.abs(dy)) {
+            e.preventDefault();
+        }
+    },
+    { passive: false }
+);
 
 // ↑新聞區塊
 

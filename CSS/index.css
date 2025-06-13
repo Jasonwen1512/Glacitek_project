@@ -228,6 +228,7 @@ h2 {
     transition: 0.3s;
     will-change: transform;
     transform: translateX(calc(-1 * ((100% - 20px) / 3) - 10px));
+    touch-action: pan-y;
 }
 .exhibit-area .card {
     width: calc((100% - 20px) / 3);
@@ -728,6 +729,9 @@ a span.op1 {
 @media screen and (max-width: 1550px) {
 }
 @media screen and (max-width: 1400px) {
+    .main-display {
+        width: 67.5%;
+    }
 }
 @media screen and (max-width: 1280px) {
 }
@@ -848,7 +852,13 @@ a span.op1 {
         margin-top: 40px;
         /* 除 3/4 是因為容器要往左移卡片本身的 3/4  */
         /* 這樣正好留出來兩邊各 1/2 */
-        transform: translateX(calc(-1 * (((100% - 20px) / 1.5 * 0.75))));
+        /* 直接把初始位置設成滑鼠的下一格（耳機），避免滑動時看到卡片被抽走的瞬間 */
+        transform: translateX(
+            calc(
+                -1 * (((100% - 20px) / 1.5 * 0.75 +
+                                (calc(1 * (100% - 20px) / 1.5 + calc(1 * 10px)))))
+            )
+        );
         /* 初始狀態（滑鼠頁）： transform: translateX(calc(-1 * (((100% - 20px) / 1.5 * 0.75))));*/
         /* 之後每往左滑一頁： transform: translateX(
                                 calc(
@@ -890,6 +900,19 @@ a span.op1 {
     .news-item-card-date {
         font-size: 0.8rem;
         margin-top: auto;
+    }
+    .news-botton {
+        width: 93%;
+        display: flex;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+    }
+    .news-botton span {
+        left: unset;
+        right: unset;
+        pointer-events: auto;
     }
     .community-share {
         margin-top: 40px;

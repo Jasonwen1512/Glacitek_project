@@ -576,4 +576,41 @@ if (gotoPage) {
     // 需要測試時，把html內要測試的區塊改為display: block，然後把下面這行註解
     changePage(gotoPage, "product", null);
 }
-document.addEventListener("touchstart", () => {}, true);
+
+switchPageArea.addEventListener("click", function (e) {
+    let e_target = e.target;
+    // "數量增減"功能的實作
+    if (
+        e_target.classList.contains("minus") ||
+        e_target.classList.contains("plus")
+    ) {
+        // 該商品對應到的數量
+        const amountElement =
+            e_target.closest(".select-card-amount_button") ||
+            e_target.closest(".minus_and_plus");
+        const amount = amountElement?.querySelector(".amount");
+        let current = parseInt(amount?.textContent);
+        if (e_target.classList.contains("plus")) {
+            current++;
+        } else if (e_target.classList.contains("minus")) {
+            current = current > 1 ? current - 1 : 1;
+        }
+        amount.textContent = current;
+    }
+    // 點擊"加入購物車"後新增商品
+    const cartBotton =
+        e_target.classList.contains("select-card-add_to_cart") ||
+        e_target.classList.contains("add_to_cart");
+    if (cartBotton) {
+        // 取得商品數量
+        const amountElement =
+            e_target.closest(".select-card-content") ||
+            e_target.closest(".individual-product-content");
+        const amount = amountElement?.querySelector(".amount");
+        // 取得商品名稱
+        const name =
+            amountElement?.querySelector(".select-card-name") ||
+            amountElement?.querySelector(".individual-product-content-title");
+        console.log(name.textContent.trim(), amount.textContent);
+    }
+});
