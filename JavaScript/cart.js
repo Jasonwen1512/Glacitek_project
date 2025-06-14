@@ -44,7 +44,9 @@ cartContent.addEventListener("click", (e) => {
         );
         const price = productCardElement.querySelector(".price");
         let unitPriceNumber = parseInt(
-            unitPrice.textContent.match(/NT\$[ \t]*([\d,]+)/)?.[1]
+            unitPrice.textContent
+                .match(/NT\$[ \t]*([\d,]+)/)?.[1]
+                .replace(/,/g, "")
         );
         let current = parseInt(amount.textContent);
         if (e_target.classList.contains("plus")) {

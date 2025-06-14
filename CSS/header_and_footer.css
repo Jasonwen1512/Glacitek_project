@@ -108,6 +108,21 @@ select {
 .community-icon > div span {
     cursor: pointer;
 }
+.cart.bump {
+    animation: bump 0.3s ease;
+}
+
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 /* 手機排版-header */
 .main-header,
 .main-footer {
@@ -135,6 +150,9 @@ select {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+.main-header-container .cart {
+    position: relative;
 }
 .main-header-container svg,
 .icon-text img,
@@ -299,6 +317,25 @@ body:has(#switch-hb:checked) {
 }
 .main-content {
     min-height: calc(100vh - 14.5vw - 226px);
+}
+.cart-content-amount {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    font-size: 0.58rem;
+    color: #fff;
+    background-color: #f00;
+    padding: 1px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    top: 0;
+    right: 0;
+}
+.cart-content-amount.hide {
+    display: none;
 }
 
 @media screen and (min-width: 500px) {

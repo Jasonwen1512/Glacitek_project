@@ -273,7 +273,7 @@ h3 {
     width: 100%;
 }
 .actual-amount {
-    font-size: 1.6rem;
+    font-size: 1.55rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -326,7 +326,7 @@ h3 {
 }
 @media screen and (max-width: 1800px) {
     .actual-amount {
-        font-size: 1.4rem;
+        font-size: 1.32rem;
     }
 }
 @media screen and (max-width: 1720px) {
@@ -359,7 +359,7 @@ h3 {
     }
     .total,
     .freight {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     .order-submit {
         font-size: 1.2rem;
@@ -367,12 +367,12 @@ h3 {
 }
 @media screen and (max-width: 1600px) {
     .actual-amount {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 }
 @media screen and (max-width: 1550px) {
     .actual-amount {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }
 @media screen and (max-width: 1400px) {

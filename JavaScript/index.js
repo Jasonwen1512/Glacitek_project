@@ -467,6 +467,3 @@ window.onload = () => {
     sloganContent.classList.add("slogan-content-display");
     tipTriangle.classList.add("tip-triangle-display");
 };
-// window.addEventListener("click", (e) => {
-//     console.log(e.target);
-// });
