@@ -2,7 +2,7 @@
 
 // 負責在載入頁面時讀取購物車內容
 {
-    let cartContents = JSON.parse(
+    const cartContents = JSON.parse(
         sessionStorage.getItem("cartContents") || "[]"
     );
     let totalAmount = 0;

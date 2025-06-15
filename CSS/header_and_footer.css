@@ -173,6 +173,7 @@ select {
     flex-direction: column;
     z-index: 4;
     transition: transform 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .menu div {
     border-top: 0;
@@ -324,7 +325,7 @@ body:has(#switch-hb:checked) {
     position: absolute;
     font-size: 0.58rem;
     color: #fff;
-    background-color: #f00;
+    background-color: #ff3b30;
     padding: 1px;
     border-radius: 50%;
     display: flex;
@@ -437,6 +438,7 @@ body:has(#switch-hb:checked) {
         top: 0px;
         right: 78.8px;
         z-index: 5;
+        box-shadow: none;
     }
     .menu a,
     .menu > div {

@@ -312,6 +312,10 @@ h3 {
 .order-submit:active {
     background-color: #00446f;
 }
+.no-product {
+    color: #888888;
+    text-align: center;
+}
 @media (hover: hover) and (pointer: fine) {
     .order-submit:hover {
         background-color: #00446f;
@@ -486,7 +490,8 @@ h3 {
     }
     .amount-number {
         display: block;
-        min-width: 20px;
+        position: relative;
+        width: 24px;
         height: 20px;
         aspect-ratio: 1/1;
         background-color: #d9d9d9;
@@ -496,6 +501,7 @@ h3 {
         justify-content: center;
         align-items: center;
         border-radius: 3px;
+        top: 1px;
     }
     .amount-number.switch {
         display: none;
@@ -518,7 +524,7 @@ h3 {
         border: none;
         aspect-ratio: 1/1;
         background-color: #d9d9d9;
-        padding: 3px;
+        padding: 3px 4px;
     }
     .minus svg,
     .plus svg {
@@ -615,11 +621,15 @@ h3 {
     .price {
         font-size: 0.7rem;
     }
+    .amount-number {
+        width: 22px;
+        border-radius: 2px;
+    }
     .minus,
     .amount,
     .plus {
         width: 24px;
-        height: 18px;
+        height: 20px;
     }
     .minus svg,
     .plus svg {
@@ -627,11 +637,9 @@ h3 {
         height: 8px;
     }
     .minus,
+    .amount,
     .plus {
-        padding: 0 5px;
-    }
-    .amount {
-        padding: auto 5px;
+        padding: 3px 4px;
     }
     .minus {
         border-radius: 2px 0 0 2px;

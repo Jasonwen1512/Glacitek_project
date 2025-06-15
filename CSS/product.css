@@ -301,6 +301,23 @@ h3::after {
 .plus {
     /* -webkit-tap-highlight-color: transparent; */
 }
+.cart-toast {
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(76, 175, 80, 0.85);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 999;
+}
+.cart-toast.show {
+    opacity: 1;
+}
 .minus:active,
 .plus:active {
     background-color: #e6e6e6;

@@ -58,7 +58,7 @@ const productData = {
             src: "../image/product/keyboard/7.jpg",
         },
         {
-            name: "人體工學分離式鍵盤",
+            name: "分離式鍵盤",
             price: "NT$ 3,280",
             description:
                 "符合人體工學的分離式佈局設計，降低手腕壓力與肩膀緊繃。適合長時間輸入工作者，如程式設計師與寫作人員。",
@@ -226,7 +226,7 @@ const productData = {
     ],
     hub: [
         {
-            name: "7 合 1 多功能 USB-C Hub",
+            name: "7合1 USB-C Hub",
             price: "NT$ 1,680",
             description:
                 "包含 HDMI、USB 3.0、SD/TF 讀卡機與 PD 快充輸入，鋁合金外殼設計散熱優良，適用筆電與平板。",
@@ -587,6 +587,7 @@ switchPageArea.addEventListener("click", (e) => {
         const amountElement =
             e_target.closest(".select-card-amount_button") ||
             e_target.closest(".minus_and_plus");
+
         const amount = amountElement?.querySelector(".amount");
         let current = parseInt(amount?.textContent);
         if (e_target.classList.contains("plus")) {
@@ -603,17 +604,21 @@ switchPageArea.addEventListener("click", (e) => {
     if (cartBotton) {
         // 取得商品數量
         const amountElement =
-            e_target.closest(".select-card-content") ||
-            e_target.closest(".individual-product-content");
+            e_target.closest(".select-card") ||
+            e_target.closest(".individual-product");
         const amount = amountElement?.querySelector(".amount");
         // 取得商品名稱、數量
         const name =
             amountElement?.querySelector(".select-card-name") ||
             amountElement?.querySelector(".individual-product-content-title");
+        // 取得商品單價
         const price =
             amountElement?.querySelector(".select-card-price") ||
             amountElement?.querySelector(".price");
+        // 取得商品圖片路徑
+        const imgSrc = amountElement?.querySelector("img");
         let isRepeat = false;
+        // 若是重複商品，則累加數量
         cartContents.forEach((item) => {
             if (item.name === name.textContent.trim()) {
                 console.log("重複商品");
@@ -621,10 +626,12 @@ switchPageArea.addEventListener("click", (e) => {
                 isRepeat = true;
             }
         });
+        // 若不是重複商品，則正常加入
         if (!isRepeat) {
             cartContents.push({
                 name: name.textContent.trim(),
-                price: price.textContent.trim().slice(4).replace(/,/g, ""),
+                price: price.textContent.trim().slice(4),
+                src: imgSrc.getAttribute("src"),
                 amount: parseInt(amount.textContent),
             });
         }
@@ -637,15 +644,22 @@ switchPageArea.addEventListener("click", (e) => {
             parseInt(amount.textContent);
         card_amount.classList.remove("hide");
         // 增加商品時，購物車的跳動動畫
-        function animateCartIcon() {
+        const animateCartIcon = () => {
             const cartIcon = document.querySelector(".cart");
             cartIcon.classList.add("bump");
             setTimeout(() => {
                 cartIcon.classList.remove("bump");
             }, 300);
-        }
+        };
         animateCartIcon();
-
+        const showAddCartToast = () => {
+            const toast = document.querySelector(".cart-toast");
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 1500);
+        };
+        showAddCartToast();
         // 名字、單價、數量
         // console.log(
         //     name.textContent.trim(),
