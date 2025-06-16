@@ -255,3 +255,50 @@ if (cartContents.length > 0) {
 } else {
     productArea.innerHTML = `<div class="no-product">購物車內沒有商品</div>`;
 }
+
+// 購物車送出檢查
+const submitform = document.querySelector(".cart-content");
+submitform.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const noProduct = submitform.querySelector(".no-product");
+    // 開始檢查
+    if (!noProduct) {
+        console.log("購物車有東西");
+        const name = submitform.querySelector("#name");
+        const nameInput = name.value.trim();
+        if (nameInput === "") {
+            alert("請輸入姓名");
+            name.focus();
+            return;
+        }
+        const phone = submitform.querySelector("#phone");
+        const phoneInput = phone.value.trim();
+        if (phoneInput === "") {
+            alert("請輸入電話號碼");
+            phone.focus();
+            return;
+        }
+        const regexp = /^09\d{8}$/;
+        if (!regexp.test(phoneInput)) {
+            alert("請輸入正確的電話號碼格式");
+            phone.focus();
+            return;
+        }
+        const email = submitform.querySelector("#email");
+        const emailInput = email.value.trim();
+        if (emailInput === "") {
+            alert("請輸入信箱");
+            email.focus();
+            return;
+        }
+        // if (!emailInput.includes("@")) {
+        //     alert("請輸入正確的信箱格式");
+        //     email.focus();
+        //     return;
+        // }
+        alert("送出資料完成");
+    } else {
+        alert("購物車內沒有商品");
+        return;
+    }
+});
