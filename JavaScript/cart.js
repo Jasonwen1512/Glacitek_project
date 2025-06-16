@@ -62,6 +62,9 @@ cartContent.addEventListener("click", (e) => {
         );
         let current = parseInt(amount.textContent);
 
+        const cartContentAmount = document.querySelector(
+            ".cart-content-amount"
+        );
         // 更新購物車內容的函式
         const updateProductOfCartContents = (plusOrMinus) => {
             switch (plusOrMinus) {
@@ -99,6 +102,10 @@ cartContent.addEventListener("click", (e) => {
                             );
                             cartContentAmount.classList.add("hide");
                         }
+                    } else {
+                        // 由於第130行已經先減掉數量了，如果反悔沒有刪除商品擇要把數量+1加回來
+                        cartContentAmount.textContent =
+                            parseInt(cartContentAmount.textContent.trim()) + 1;
                     }
                     break;
                 default:
@@ -112,9 +119,7 @@ cartContent.addEventListener("click", (e) => {
         };
 
         // 購物車"數量"、"小計"的計算，以及右上角購物車小點的即時更新
-        const cartContentAmount = document.querySelector(
-            ".cart-content-amount"
-        );
+
         if (e_target.classList.contains("plus")) {
             current++;
             updateProductOfCartContents("plus");
@@ -131,7 +136,7 @@ cartContent.addEventListener("click", (e) => {
                 console.log("此時數量歸0，刪除該區塊");
             }
         }
-        console.log(cartContents);
+        // console.log(cartContents);
 
         // 更新購物車畫面上的"數量"、"小計"數字
         amountNumber.textContent = current;
@@ -155,6 +160,18 @@ cartContent.addEventListener("click", (e) => {
             ".actual-amount-price"
         );
         actualAmountPrice.textContent = `NT$ ${totalprice + fp}`;
+    }
+    // 點選商品圖片、名字跳轉
+    if (
+        e_target.tagName === "IMG" ||
+        e_target.classList.contains("product-card-title")
+    ) {
+        const productArea = e_target.closest(".product-area");
+        const productCardTitle = productArea
+            .querySelector(".product-card-title")
+            .textContent.trim();
+        sessionStorage.setItem("gotoPage", productCardTitle);
+        window.location.href = "../HTML/product.html";
     }
 });
 

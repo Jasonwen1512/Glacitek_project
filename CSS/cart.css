@@ -74,6 +74,10 @@ h3 {
     vertical-align: middle;
     height: auto;
     aspect-ratio: 1.2/1;
+    cursor: pointer;
+}
+.product-card-img img:active {
+    opacity: 0.8;
 }
 .product-card-info {
     width: 100%;

@@ -318,6 +318,16 @@ h3::after {
 .cart-toast.show {
     opacity: 1;
 }
+.has-search {
+    color: #004a7c;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.no-search {
+    color: #555;
+    text-align: center;
+}
 .minus:active,
 .plus:active {
     background-color: #e6e6e6;

@@ -545,6 +545,81 @@ const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
         });
     });
 };
+// 點擊購物車內商品圖片，跳轉到對應個別商品頁面
+const goto_targetProduct = (name) => {
+    // console.log(Object.entries(productData));
+    let data = {};
+    for (const [category, products] of Object.entries(productData)) {
+        const match = products.find((product) => product.name === name);
+        if (match) {
+            data = {
+                category,
+                product: match,
+            };
+        }
+    }
+    console.log(data);
+    const switchPageArea = document.querySelector(".switch-page-area");
+    let html = "";
+    html += `<div
+                class="main-content"
+                style="display: flex; flex-direction: column;"
+                >
+                    <div class="bar">
+                        <h3>產品專區</h3>
+                            <nav class="breadcrumb">
+                                <ul>
+                                    <li>
+                                        <a href="../index.html">首頁</a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="javascript:void(0);"
+                                            onclick="changePage('product','product',null)"
+                                            >產品專區</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changePage('selectProduct', '${data.category}',null)">${data.product.name}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                    </div>
+                    <div class="individual-product">
+                        <div class="individual-product-img">
+                            <img src="${data.product.src}" alt="${data.product.name}" />
+                        </div>
+                        <div class="individual-product-content">
+                            <div class="individual-product-content-title">
+                                ${data.product.name}
+                            </div>
+                            <div class="individual-product-content-text">
+                                <div class="description">
+                                    ${data.product.description}
+                                </div>
+                                <div class="minus_and_plus-and-price">
+                                    <div class="minus_and_plus">
+                                        <button class="minus">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
+                                                <path d="M0 1V0H13V1H0Z" fill="black"/>
+                                            </svg>
+                                        </button>
+                                        <div class="amount">1</div>
+                                        <button class="plus">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                                <path d="M0 7V6H6V0H7V6H13V7H7V13H6V7H0Z" fill="black"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="price">${data.product.price}</div>
+                                </div>
+                            </div>
+                            <button class="add_to_cart">加入購物車</button>
+                        </div>
+                    </div>
+                </div>`;
+    switchPageArea.innerHTML = html;
+};
 
 const changePage = (targetPage, selectProduct, targetProduct) => {
     // targetPage: 要跳轉的頁面
@@ -564,18 +639,7 @@ const changePage = (targetPage, selectProduct, targetProduct) => {
     html = "";
 };
 
-// 首頁點擊card後跳轉到對應的產品頁
-const gotoPage = sessionStorage.getItem("gotoPage") || "";
-if (gotoPage) {
-    changePage("selectProduct", gotoPage, null);
-    // 清除sessionStorage
-    sessionStorage.removeItem("gotoPage");
-} else {
-    // 需要測試時，把html內要測試的區塊改為display: block，然後把下面這行註解
-    changePage(gotoPage, "product", null);
-}
-
-let cartContents = JSON.parse(sessionStorage.getItem("cartContents") || "[]");
+const cartContents = JSON.parse(sessionStorage.getItem("cartContents") || "[]");
 switchPageArea.addEventListener("click", (e) => {
     let e_target = e.target;
     // "數量增減"功能的實作
@@ -652,6 +716,7 @@ switchPageArea.addEventListener("click", (e) => {
             }, 300);
         };
         animateCartIcon();
+        // 增加商品時，畫面會跳出提示，過1.5秒再消失
         const showAddCartToast = () => {
             const toast = document.querySelector(".cart-toast");
             toast.classList.add("show");
@@ -668,3 +733,94 @@ switchPageArea.addEventListener("click", (e) => {
         // );
     }
 });
+
+const params = new URLSearchParams(window.location.search);
+const input = params.get("input");
+//如果是搜尋的跳轉
+if (input) {
+    let match = [];
+    for (const products of Object.values(productData)) {
+        products.map((product) => {
+            if (product.name.includes(input)) {
+                match.push(product);
+                // console.log(product);
+            }
+        });
+    }
+    let html = "";
+    const switchPageArea = document.querySelector(".switch-page-area");
+    // 如果有搜尋到東西
+    if (match.length) {
+        html += `<div class="main-content">
+                    <div class="has-search">
+                        ↓以下是「${input}」的搜尋結果↓
+                    </div>
+                    <div class="slelect_product">`;
+        for (let item of match) {
+            html += `<div class="select-card">
+                    <div class="select-card-img">
+                        <img
+                            src="${item.src}"
+                            alt="${item.name}"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="select-card-content">
+                        <div class="select-card-name">
+                            ${item.name}
+                        </div>
+                        <div class="select-card-price">
+                            ${item.price}
+                        </div>
+                        <div class="select-card-amount_button">
+                            <button class="minus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
+                                    <path d="M0 1V0H13V1H0Z" fill="black"/>
+                                </svg>
+                            </button>
+                            <div class="amount">1</div>
+                            <button class="plus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                    <path d="M0 7V6H6V0H7V6H13V7H7V13H6V7H0Z" fill="black"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="select-card-add_to_cart">
+                            加入購物車
+                        </button>
+                    </div>
+                </div>`;
+        }
+        html += `</div>
+                    </div>
+                `;
+    } // 沒有搜到東西
+    else {
+        console.log("沒有搜尋到東西");
+        html += `<div class="main-content" style="display: flex;justify-content: center;align-items: center;">
+                    <div class="no-search">
+                        抱歉，沒有找到符合「${input}」的搜尋結果
+                    </div>
+                </div>`;
+    }
+    switchPageArea.innerHTML = html;
+} // 其他的跳轉（首頁產品、直接點header的產品專區、購物車跳轉）
+else {
+    const gotoPage = sessionStorage.getItem("gotoPage") || "";
+    const categoryKeys = Object.keys(productData);
+    // 跳轉到正常的"產品頁面"
+    if (!gotoPage) {
+        // 需要測試時，把html內要測試的區塊改為display: block，然後把下面這行註解
+        changePage("product", null, null);
+    }
+    // 首頁點擊card後跳轉到對應的產品頁
+    else if (categoryKeys.includes(gotoPage)) {
+        changePage("selectProduct", gotoPage, null);
+        sessionStorage.removeItem("gotoPage");
+    }
+    // 購物車跳轉到"個別產品頁面"
+    else {
+        goto_targetProduct(gotoPage);
+        sessionStorage.removeItem("gotoPage");
+    }
+}
