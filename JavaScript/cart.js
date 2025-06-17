@@ -267,28 +267,30 @@ submitform.addEventListener("submit", (e) => {
         const name = submitform.querySelector("#name");
         const nameInput = name.value.trim();
         if (nameInput === "") {
-            alert("請輸入姓名");
             name.focus();
+            name.classList.add("error");
             return;
         }
         const phone = submitform.querySelector("#phone");
         const phoneInput = phone.value.trim();
         if (phoneInput === "") {
-            alert("請輸入電話號碼");
             phone.focus();
+            phone.classList.add("error");
             return;
         }
         const regexp = /^09\d{8}$/;
         if (!regexp.test(phoneInput)) {
-            alert("請輸入正確的電話號碼格式");
+            phone.value = "";
             phone.focus();
+            phone.classList.add("error");
+            phone.classList.add("format-error");
             return;
         }
         const email = submitform.querySelector("#email");
         const emailInput = email.value.trim();
         if (emailInput === "") {
-            alert("請輸入信箱");
             email.focus();
+            email.classList.add("error");
             return;
         }
         // if (!emailInput.includes("@")) {
@@ -301,4 +303,15 @@ submitform.addEventListener("submit", (e) => {
         alert("購物車內沒有商品");
         return;
     }
+});
+const inputs = document.querySelectorAll(".buyer-info-content input");
+inputs.forEach((item) => {
+    item.addEventListener("input", () => {
+        item.classList.remove("error");
+        item.classList.remove("format-error");
+    });
+    item.addEventListener("blur", () => {
+        item.classList.remove("error");
+        item.classList.remove("format-error");
+    });
 });

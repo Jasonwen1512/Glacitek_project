@@ -225,9 +225,48 @@ h3 {
     font-size: 1.2rem;
 }
 .buyer-info-content label {
+    display: block;
+    width: 100%;
     font-size: 1.2rem;
+    position: relative;
 }
-.buyer-info-content input {
+.buyer-info-content input.error,
+.buyer-info-content input.format-error {
+    border: none;
+    outline: 1px #ff3b30 solid;
+}
+label[for="name"]::after {
+    content: "請輸入姓名！";
+    /* width: 100%; */
+    position: absolute;
+    color: #ff3b30;
+    top: 0;
+    right: 0;
+    display: none;
+}
+label[for="phone"]::after {
+    content: "請輸入電話！";
+    /* width: 100%; */
+    position: absolute;
+    color: #ff3b30;
+    top: 0;
+    right: 0;
+    display: none;
+}
+label[for="email"]::after {
+    content: "請輸入信箱！";
+    /* width: 100%; */
+    position: absolute;
+    color: #ff3b30;
+    top: 0;
+    right: 0;
+    display: none;
+}
+label:has(input.error)::after {
+    display: block;
+}
+label[for="phone"]:has(input.format-error)::after {
+    content: "電話格式錯誤！";
 }
 .buyer-info-content input,
 .buyer-info-content textarea {
