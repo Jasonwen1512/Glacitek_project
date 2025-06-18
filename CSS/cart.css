@@ -232,8 +232,7 @@ h3 {
 }
 .buyer-info-content input.error,
 .buyer-info-content input.format-error {
-    border: none;
-    outline: 1px #ff3b30 solid;
+    border: 1px #f00 solid;
 }
 label[for="name"]::after {
     content: "請輸入姓名！";
@@ -282,7 +281,8 @@ label[for="phone"]:has(input.format-error)::after {
     font-size: 1rem;
 }
 .buyer-info-content textarea {
-    /* min-height: 30%; */
+    height: auto;
+    overflow: hidden;
 }
 .order-summary {
     flex-direction: column;

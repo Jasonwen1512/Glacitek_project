@@ -268,6 +268,7 @@ submitform.addEventListener("submit", (e) => {
         const nameInput = name.value.trim();
         if (nameInput === "") {
             name.focus();
+            // 若出問題，添加警告資訊
             name.classList.add("error");
             return;
         }
@@ -298,12 +299,13 @@ submitform.addEventListener("submit", (e) => {
         //     email.focus();
         //     return;
         // }
-        alert("送出資料完成");
+        if (confirm("確定要送出嗎？")) alert("送出資料完成！");
     } else {
         alert("購物車內沒有商品");
         return;
     }
 });
+// 設定在更改input內容時、焦點不在input上時，移除警告資訊
 const inputs = document.querySelectorAll(".buyer-info-content input");
 inputs.forEach((item) => {
     item.addEventListener("input", () => {
@@ -314,4 +316,17 @@ inputs.forEach((item) => {
         item.classList.remove("error");
         item.classList.remove("format-error");
     });
+});
+// 備註textarea自適應高度
+const textarea = document.getElementById("remark");
+textarea?.addEventListener("input", (e) => {
+    textarea.style.height = "auto";
+    // console.log(
+    //     `高度：${textarea.style.height}`,
+    //     `可滾動高度：${textarea.scrollHeight}`
+    // );
+    textarea.style.height =
+        screen.width >= 1024
+            ? `${e.target.scrollHeight + 2}px`
+            : `${e.target.scrollHeight + 1.78}px`;
 });
