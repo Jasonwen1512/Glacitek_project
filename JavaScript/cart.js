@@ -262,48 +262,91 @@ submitform.addEventListener("submit", (e) => {
     e.preventDefault();
     const noProduct = submitform.querySelector(".no-product");
     // 開始檢查
-    if (!noProduct) {
-        console.log("購物車有東西");
-        const name = submitform.querySelector("#name");
-        const nameInput = name.value.trim();
-        if (nameInput === "") {
-            name.focus();
-            // 若出問題，添加警告資訊
-            name.classList.add("error");
-            return;
-        }
-        const phone = submitform.querySelector("#phone");
-        const phoneInput = phone.value.trim();
-        if (phoneInput === "") {
-            phone.focus();
-            phone.classList.add("error");
-            return;
-        }
-        const regexp = /^09\d{8}$/;
-        if (!regexp.test(phoneInput)) {
-            phone.value = "";
-            phone.focus();
-            phone.classList.add("error");
-            phone.classList.add("format-error");
-            return;
-        }
-        const email = submitform.querySelector("#email");
-        const emailInput = email.value.trim();
-        if (emailInput === "") {
-            email.focus();
-            email.classList.add("error");
-            return;
-        }
-        // if (!emailInput.includes("@")) {
-        //     alert("請輸入正確的信箱格式");
-        //     email.focus();
-        //     return;
-        // }
-        if (confirm("確定要送出嗎？")) alert("送出資料完成！");
-    } else {
+    if (noProduct) {
         alert("購物車內沒有商品");
         return;
     }
+    const items = [
+        {
+            id: "name",
+            checkHasNotInput: (val) => val == "",
+        },
+        {
+            id: "phone",
+            checkHasNotInput: (val) => val == "",
+            checkFormat: (val) => /^09\d{8}$/.test(val),
+        },
+        {
+            id: "email",
+            checkHasNotInput: (val) => val == "",
+            checkFormat: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+        },
+    ];
+    for (const item of items) {
+        const el = submitform.querySelector(`#${item.id}`);
+        const val = el.value.trim();
+        // 如果輸入框為空
+        if (item.checkHasNotInput(val)) {
+            el.classList.add("error");
+            el.focus();
+            return;
+        } // 若不為空，則開始檢查是否符合格式
+        else if (item.checkFormat && !item.checkFormat(val)) {
+            el.classList.add("format-error");
+            el.value = "";
+            el.focus();
+            return;
+        }
+        el.classList.remove("error", "format-error");
+    }
+    if (confirm("確定要送出嗎？")) {
+        alert("送出資料完成！");
+    }
+    // if (!noProduct) {
+    //     // console.log("購物車有東西");
+    //     const name = submitform.querySelector("#name");
+    //     const nameInput = name.value.trim();
+    //     if (nameInput === "") {
+    //         name.focus();
+    //         // 若出問題，添加警告資訊
+    //         name.classList.add("error");
+    //         return;
+    //     }
+    //     const phone = submitform.querySelector("#phone");
+    //     const phoneInput = phone.value.trim();
+    //     if (phoneInput === "") {
+    //         phone.focus();
+    //         phone.classList.add("error");
+    //         return;
+    //     }
+    //     const PhoneRegexp = /^09\d{8}$/;
+    //     if (!PhoneRegexp.test(phoneInput)) {
+    //         phone.value = "";
+    //         phone.focus();
+    //         phone.classList.add("error");
+    //         phone.classList.add("format-error");
+    //         return;
+    //     }
+    //     const email = submitform.querySelector("#email");
+    //     const emailInput = email.value.trim();
+    //     if (emailInput === "") {
+    //         email.focus();
+    //         email.classList.add("error");
+    //         return;
+    //     }
+    //     const emailRegexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     if (!emailRegexp.test(emailInput)) {
+    //         email.value = "";
+    //         email.focus();
+    //         email.classList.add("error");
+    //         email.classList.add("format-error");
+    //         return;
+    //     }
+    //     if (confirm("確定要送出嗎？")) alert("送出資料完成！");
+    // } else {
+    //     alert("購物車內沒有商品");
+    //     return;
+    // }
 });
 // 設定在更改input內容時、焦點不在input上時，移除警告資訊
 const inputs = document.querySelectorAll(".buyer-info-content input");

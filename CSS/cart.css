@@ -264,8 +264,21 @@ label[for="email"]::after {
 label:has(input.error)::after {
     display: block;
 }
+label[for="phone"]:has(input.error)::after {
+    content: "請輸入電話！";
+    display: block;
+}
 label[for="phone"]:has(input.format-error)::after {
     content: "電話格式錯誤！";
+    display: block;
+}
+label[for="email"]:has(input.error)::after {
+    content: "請輸入信箱！";
+    display: block;
+}
+label[for="email"]:has(input.format-error)::after {
+    content: "信箱格式錯誤！";
+    display: block;
 }
 .buyer-info-content input,
 .buyer-info-content textarea {
