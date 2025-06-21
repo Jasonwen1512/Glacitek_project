@@ -153,7 +153,8 @@ cartContent.addEventListener("click", (e) => {
         });
         totalOrderPrice.textContent = `NT$ ${totalprice}`;
         const freightPrice = cartContent.querySelector(".freight-price");
-        freightPrice.textContent = totalprice < 5000 ? `NT$ 70` : `NT$ 0`;
+        freightPrice.textContent =
+            totalprice < 5000 && totalprice !== 0 ? `NT$ 70` : `NT$ 0`;
         const fp = parseInt(freightPrice.textContent.slice(4));
         // console.log(totalprice, fp);
         const actualAmountPrice = cartContent.querySelector(
