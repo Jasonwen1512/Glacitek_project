@@ -218,7 +218,7 @@ exhibitAreaCard.forEach((card) => {
         let productName = this.querySelector(".card-img img").alt;
         // console.log(productName);
         sessionStorage.setItem("gotoPage", productName);
-        const basePath = location.hostname.includes("github.io")
+        const basePath = location.href.includes("github.io")
             ? "/Glacitek_project"
             : "";
         window.location.href = `${basePath}/HTML/product.html`;
