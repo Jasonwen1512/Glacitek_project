@@ -213,6 +213,16 @@ h3::after {
     padding: 2.5% 0;
     cursor: pointer;
 }
+.minus.not-click {
+    background-color: #f2f2f2;
+    /* color: #888; */
+    opacity: 0.5;
+    pointer-events: none;
+    border-color: #bbb;
+}
+.minus.not-click path {
+    fill: #aaa;
+}
 
 .individual-product {
     width: 100%;

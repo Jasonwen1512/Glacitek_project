@@ -434,7 +434,7 @@ const product_to_selectProduct = (selectProduct, chineseName) => {
                                     ${productData[selectProduct][i].price}
                                 </div>
                                 <div class="select-card-amount_button">
-                                    <button class="minus">
+                                    <button class="minus not-click">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
                                             <path d="M0 1V0H13V1H0Z" fill="black"/>
                                         </svg>
@@ -516,7 +516,7 @@ const selectProduct_to_targetProduct = (selectProduct, chineseName) => {
                                         </div>
                                         <div class="minus_and_plus-and-price">
                                             <div class="minus_and_plus">
-                                                <button class="minus">
+                                                <button class="minus not-click">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
                                                         <path d="M0 1V0H13V1H0Z" fill="black"/>
                                                     </svg>
@@ -599,7 +599,7 @@ const goto_targetProduct = (name) => {
                                 </div>
                                 <div class="minus_and_plus-and-price">
                                     <div class="minus_and_plus">
-                                        <button class="minus">
+                                        <button class="minus not-click">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
                                                 <path d="M0 1V0H13V1H0Z" fill="black"/>
                                             </svg>
@@ -653,11 +653,14 @@ switchPageArea.addEventListener("click", (e) => {
             e_target.closest(".minus_and_plus");
 
         const amount = amountElement?.querySelector(".amount");
+        const minus = amountElement?.querySelector(".minus");
         let current = parseInt(amount?.textContent);
         if (e_target.classList.contains("plus")) {
             current++;
+            minus.classList.remove("not-click");
         } else if (e_target.classList.contains("minus")) {
             current = current > 1 ? current - 1 : 1;
+            if (current == 1) minus.classList.add("not-click");
         }
         amount.textContent = current;
     }
@@ -716,6 +719,9 @@ switchPageArea.addEventListener("click", (e) => {
             }, 300);
         };
         animateCartIcon();
+        amount.textContent = 1;
+        const minus = amountElement?.querySelector(".minus");
+        minus.classList.add("not-click");
         // 增加商品時，畫面會跳出提示，過1.5秒再消失
         const showAddCartToast = () => {
             const toast = document.querySelector(".cart-toast");
