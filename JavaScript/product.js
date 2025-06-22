@@ -779,7 +779,7 @@ if (input) {
                             ${item.price}
                         </div>
                         <div class="select-card-amount_button">
-                            <button class="minus">
+                            <button class="minus not-click">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="1" viewBox="0 0 13 1" fill="none">
                                     <path d="M0 1V0H13V1H0Z" fill="black"/>
                                 </svg>
