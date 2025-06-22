@@ -39,12 +39,9 @@ searchFrom.addEventListener("submit", (e) => {
         alert("請輸入產品關鍵字");
         return;
     }
-    // 判斷當前是不是在首頁，如果是的話產品網址是HTML/product.html，不是的話則是../HTML/product.html
-    const isHome =
-        location.pathname.endsWith("index.html") || location.pathname === "/";
-    window.location.href = isHome
-        ? `HTML/product.html?input=${input}`
-        : `../HTML/product.html?input=${input}`;
+    const isGithub = location.href.includes("github.io");
+    const basePath = isGithub ? "/Glacitek_project" : "";
+    window.location.href = `${basePath}/HTML/product.html?input=${input}`;
 });
 
 // 為body增加touchstart事件，強制讓手機啟動:active
